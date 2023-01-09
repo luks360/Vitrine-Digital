@@ -4,6 +4,7 @@ from django.contrib.auth.views import LoginView
 from django.shortcuts import redirect, render
 from django.urls import reverse, reverse_lazy
 from django.views import View
+from apps.main.forms import RegisterClientForm, RegisterStoreForm
 
 # Create your views here.
 
@@ -37,8 +38,30 @@ class LoginView(LoginView):
         messages.error(self.request, "Inválido Login e Senha.")
         return self.render_to_response(self.get_context_data(form=form))
 
+class RegisterView(View):
+
+    forms = {
+        "form_client": RegisterClientForm(),
+        "form_store": RegisterStoreForm(),
+    }
+
+    def get(self, request):
+
+        return render(request, "sign-up.html", self.forms)
 
 class LogoutView(View):
     def get(self, request):
         logout(request)
         return reverse("login")
+
+class AboutView(View):
+
+    def get(self, request):
+
+        return render(request, "about.html")
+
+class ContactView(View):
+
+    def get(self, request):
+
+        return render(request, "contact.html")
