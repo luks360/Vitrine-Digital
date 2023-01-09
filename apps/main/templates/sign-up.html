@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
-{% load static %}
-{% block title %} Login {% endblock title %}
+{%load static %}
+{% block title %} Cadastrar {% endblock title %}
 
 {% block content %}
 
@@ -11,25 +11,25 @@
             <div class="shadow" style="background-color: #fff;">
                 <ul class="nav nav-pills nav-justified mb-3" id="ex1" role="tablist">
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link btn btn-block  mb-4 active" id="tab-login-c" data-bs-toggle="pill"
-                            data-bs-target="#pills-login-c" role="tab" aria-controls="pills-login-c"
-                            aria-selected="true">Logar como cliente</button>
+                        <button class="nav-link btn btn-block  mb-4 active" id="tab-register-c" data-bs-toggle="pill"
+                            data-bs-target="#pills-register-c" role="tab" aria-controls="pills-register-c"
+                            aria-selected="true">Cadastrar como cliente</button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link btn btn-block mb-4 " id="tab-login-l" data-bs-toggle="pill"
-                            data-bs-target="#pills-login-l" role="tab" aria-controls="pills-login-l"
-                            aria-selected="false">Logar como Loja</button>
+                        <button class="nav-link btn btn-block mb-4 " id="tab-register-l" data-bs-toggle="pill"
+                            data-bs-target="#pills-register-l" role="tab" aria-controls="pills-register-l"
+                            aria-selected="false">Cadastrar como Loja</button>
                     </li>
                 </ul>
                 <!-- Pills navs -->
 
                 <!-- Pills content -->
                 <div class="tab-content">
-                    <div class="tab-pane fade show active" id="pills-login-c" role="tabpanel"
-                        aria-labelledby="tab-login-c">
+                    <div class="tab-pane fade show active" id="pills-register-c" role="tabpanel"
+                        aria-labelledby="tab-register-c">
                         <form>
                             <div class="text-center mb-3">
-                                <p>Logar com:</p>
+                                <p>Cadastrar com:</p>
                                 <button type="button" class="btn btn-link btn-floating mx-1">
                                     <i class="fab fa-facebook-f"></i>
                                 </button>
@@ -49,26 +49,20 @@
 
                             <p class="text-center">ou:</p>
 
-                            <!-- Email input -->
-                            <div class="form-outline mb-4">
-                                <input type="email" id="loginName" class="form-control" />
-                                <label class="form-label" for="loginName">Email</label>
-                            </div>
-
-                            <!-- Password input -->
-                            <div class="form-outline mb-4">
-                                <input type="password" id="loginPassword" class="form-control" />
-                                <label class="form-label" for="loginPassword">Senha</label>
-                            </div>
+                            {{ form_client.name }}
+                            {{ form_client.last_name }}
+                            {{ form_client.email }}
+                            {{ form_client.password }}
+                            {{ form_client.birth_date }}
 
                             <!-- 2 column grid layout -->
                             <div class="row mb-4">
                                 <div class="col-md-6 d-flex justify-content-center">
                                     <!-- Checkbox -->
                                     <div class="form-check mb-3 mb-md-0">
-                                        <input class="form-check-input" type="checkbox" value="" id="loginCheck-c"
+                                        <input class="form-check-input" type="checkbox" value="" id="registerCheck-c"
                                             checked />
-                                        <label class="form-check-label" for="loginCheck-c"> Lembre de mim </label>
+                                        <label class="form-check-label" for="registerCheck-c"> Lembre de mim </label>
                                     </div>
                                 </div>
 
@@ -79,7 +73,7 @@
                             </div>
 
                             <!-- Submit button -->
-                            <button type="submit" class="btn btn-primary btn-block mb-4">Logar</button>
+                            <button type="submit" class="btn btn-primary btn-block mb-4">Cadastrar</button>
 
                             <!-- Register buttons -->
                             <div class="text-center">
@@ -87,10 +81,10 @@
                             </div>
                         </form>
                     </div>
-                    <div class="tab-pane fade" id="pills-login-l" role="tabpanel" aria-labelledby="tab-login-l">
+                    <div class="tab-pane fade" id="pills-register-l" role="tabpanel" aria-labelledby="tab-register-l">
                         <form>
                             <div class="text-center mb-3">
-                                <p>Logar com:</p>
+                                <p>Cadastrar com:</p>
                                 <button type="button" class="btn btn-link btn-floating mx-1">
                                     <i class="fab fa-facebook-f"></i>
                                 </button>
@@ -110,26 +104,20 @@
 
                             <p class="text-center">or:</p>
 
-                            <!-- Name input -->
-                            <div class="form-outline mb-4">
-                                <input type="text" id="loginCNPJ" class="form-control" />
-                                <label class="form-label" for="loginCNPJ">CNPJ</label>
-                            </div>
-
-                            <!-- Password input -->
-                            <div class="form-outline mb-4">
-                                <input type="password" id="loginPasswordL" class="form-control" />
-                                <label class="form-label" for="loginPasswordL">Password</label>
-                            </div>
+                                {{ form_store.cnpj }}
+                                {{ form_store.corporate_name }}
+                                {{ form_store.email }}
+                                {{ form_store.contact }}
+                                {{ form_store.segment }}
 
                             <!-- 2 column grid layout -->
                             <div class="row mb-4">
                                 <div class="col-md-6 d-flex justify-content-center">
                                     <!-- Checkbox -->
                                     <div class="form-check mb-3 mb-md-0">
-                                        <input class="form-check-input" type="checkbox" value="" id="loginCheck-l"
+                                        <input class="form-check-input" type="checkbox" value="" id="registerCheck-l"
                                             checked />
-                                        <label class="form-check-label" for="loginCheck-l"> Lembre de mim </label>
+                                        <label class="form-check-label" for="registerCheck-l"> Lembre de mim </label>
                                     </div>
                                 </div>
 
@@ -140,7 +128,7 @@
                             </div>
 
                             <!-- Submit button -->
-                            <button type="submit" class="btn btn-primary btn-block mb-4">Logar</button>
+                            <button type="submit" class="btn btn-primary btn-block mb-4">Cadastrar</button>
 
                             <!-- Register buttons -->
                             <div class="text-center">
