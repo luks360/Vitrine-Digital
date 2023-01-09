@@ -5,7 +5,7 @@
 <nav class="navbar navbar-expand-lg navbar-light shadow">
     <div class="container d-flex justify-content-between align-items-center">
 
-        <a class="navbar-brand text-success logo h1 align-self-center" href="index.html">
+        <a class="navbar-brand text-success logo h1 align-self-center" href="/">
             <image class="img-fluid" src="{% static 'assets/img/logo.png' %}" style="width: 50px; height: 50px;">
             <image class="img-fluid" src="{% static 'assets/img/nome-logo.png' %}" >
         </a>
@@ -18,13 +18,13 @@
             <div class="flex-fill">
                 <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html">Inicio</a>
+                        <a class="nav-link" href="/">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="about.html">Sobre</a>
+                        <a class="nav-link" href="/about">Sobre</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="contact.html">Contato</a>
+                        <a class="nav-link" href="/contact">Contato</a>
                     </li>
                 </ul>
             </div>
@@ -51,8 +51,8 @@
                     </a>
                 {% endif %}
                 {% if user.is_authenticated == False %}
-                    <button class="btn btn-outline-danger" style="margin-right: 10px;">login</button>
-                    <button class="btn btn-outline-danger">Cadastre-se</button>
+                    <a href="/login"><button class="btn btn-outline-danger" style="margin-right: 10px;">Login</button></a>
+                    <a href="/register"><button class="btn btn-outline-danger">Cadastre-se</button></a>
                 {% endif %}
             </div>
         </div>
