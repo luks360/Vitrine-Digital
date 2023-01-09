@@ -107,12 +107,105 @@
         <div class="row">
             {% for item in categories %}
                 <div class="col-12 col-md-4 p-5 mt-3">
-                    <a class="d-flex justify-content-center" href="#">
+                    {% comment %} alimentação {% endcomment %}
+                    {% if item == 'Alimentação'%}
+                    <a class="d-flex justify-content-center" href="/shops">
                         <img style="width: 80px; height: 80px;" src="static/assets/img/{{item}}.png" class="img-fluid">
                     </a>
-                    <a href="#" style="text-decoration: none" class="text-dark">
+                    
+                    <a href="/shops" style="text-decoration: none" class="text-dark">
                         <h5 class="text-center mt-3 mb-3">{{item}}</h5>
                     </a>
+
+                    {% endif %}
+                    {% comment %} cosméticos {% endcomment %}
+                    {% if item == 'Cosméticos'%}
+                    <a class="d-flex justify-content-center" href="/shops">
+                        <img style="width: 80px; height: 80px;" src="static/assets/img/{{item}}.png" class="img-fluid">
+                    </a>
+                    
+                    <a href="/shops" style="text-decoration: none" class="text-dark">
+                        <h5 class="text-center mt-3 mb-3">{{item}}</h5>
+                    </a>
+                    {% endif %}
+
+                    {% comment %} Confecções {% endcomment %}
+                    {% if item == 'Confecções'%}
+                    <a class="d-flex justify-content-center" href="/shops">
+                        <img style="width: 80px; height: 80px;" src="static/assets/img/{{item}}.png" class="img-fluid">
+                    </a>
+                    
+                    <a href="/shops" style="text-decoration: none" class="text-dark">
+                        <h5 class="text-center mt-3 mb-3">{{item}}</h5>
+                    </a>
+                    {% endif %}
+
+                    {% comment %} Bijuterias {% endcomment %}
+                    {% if item == 'Bijuterias'%}
+                    <a class="d-flex justify-content-center" href="/shops">
+                        <img style="width: 80px; height: 80px;" src="static/assets/img/{{item}}.png" class="img-fluid">
+                    </a>
+                    
+                    <a href="/shops" style="text-decoration: none" class="text-dark">
+                        <h5 class="text-center mt-3 mb-3">{{item}}</h5>
+                    </a>
+                    {% endif %}
+
+                    {% comment %} Construção e ferramentas {% endcomment %}
+                    {% if item == 'Construção e ferramentas'%}
+                    <a class="d-flex justify-content-center" href="/shops">
+                        <img style="width: 80px; height: 80px;" src="static/assets/img/{{item}}.png" class="img-fluid">
+                    </a>
+                    
+                    <a href="/shops" style="text-decoration: none" class="text-dark">
+                        <h5 class="text-center mt-3 mb-3">{{item}}</h5>
+                    </a>
+                    {% endif %}
+
+                    {% comment %} Variedades {% endcomment %}
+                    {% if item == 'Variedades'%}
+                    <a class="d-flex justify-content-center" href="/shops">
+                        <img style="width: 80px; height: 80px;" src="static/assets/img/{{item}}.png" class="img-fluid">
+                    </a>
+                    
+                    <a href="/shops" style="text-decoration: none" class="text-dark">
+                        <h5 class="text-center mt-3 mb-3">{{item}}</h5>
+                    </a>
+                    {% endif %}
+
+                    {% comment %} Calçados {% endcomment %}
+                    {% if item == 'Calçados'%}
+                    <a class="d-flex justify-content-center" href="/shops">
+                        <img style="width: 80px; height: 80px;" src="static/assets/img/{{item}}.png" class="img-fluid">
+                    </a>
+                    
+                    <a href="/shops" style="text-decoration: none" class="text-dark">
+                        <h5 class="text-center mt-3 mb-3">{{item}}</h5>
+                    </a>
+                    {% endif %}
+
+                    {% comment %} Decoração {% endcomment %}
+                    {% if item == 'Decoração'%}
+                    <a class="d-flex justify-content-center" href="/shops">
+                        <img style="width: 80px; height: 80px;" src="static/assets/img/{{item}}.png" class="img-fluid">
+                    </a>
+                    
+                    <a href="/shops" style="text-decoration: none" class="text-dark">
+                        <h5 class="text-center mt-3 mb-3">{{item}}</h5>
+                    </a>
+                    {% endif %}
+
+                    {% comment %} Eletrônicos {% endcomment %}
+                    {% if item == 'Eletrônicos'%}
+                    <a class="d-flex justify-content-center" href="/shops">
+                        <img style="width: 80px; height: 80px;" src="static/assets/img/{{item}}.png" class="img-fluid">
+                    </a>
+                    
+                    <a href="/shops" style="text-decoration: none" class="text-dark">
+                        <h5 class="text-center mt-3 mb-3">{{item}}</h5>
+                    </a>
+                    {% endif %}
+
                 </div>
             {% endfor %}
         </div>

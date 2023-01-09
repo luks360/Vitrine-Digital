@@ -1,0 +1,61 @@
+.section-padding {
+    padding: 60px 0;
+}
+
+/* @media (min-width: 768px){
+    .container-list {
+        max-width: 720px;
+    }
+} */
+
+.container-list{
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 30px;
+    padding-left: 106px;
+}
+
+.coluna-card{
+    padding: 15px;
+}
+
+.tg-product{
+    width: 100%;
+    float: left;
+    font-size: 14px;
+    line-height: 18px;
+    list-style: none;
+    margin: 0 0 12px;
+    padding: 20px 0 10px;
+    border-bottom: 1px solid #dbdbdb;
+
+}
+
+
+
+
+/* @media (min-width: 768px){
+    .col-md-12 {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 100%;
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+} */
+
+
+.card{
+    border: none;
+}
+
+.card-body h5{
+    color: #082d86 !important;
+    font-weight: 700;
+}
+
+
+.row-02{
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 10px;
+}

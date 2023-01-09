@@ -5,8 +5,6 @@ from django.shortcuts import redirect, render
 from django.urls import reverse, reverse_lazy
 from django.views import View
 
-# Create your views here.
-
 categories = [
     "Cosméticos",
     "Confecções",
@@ -42,3 +40,9 @@ class LogoutView(View):
     def get(self, request):
         logout(request)
         return reverse("login")
+
+class ShopsView(View):
+    def get(self, request):
+        return render(request, "shops.html", context={
+            'segment': 'Alimentação',
+        })

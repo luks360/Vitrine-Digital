@@ -1,8 +1,9 @@
 from django.db import models
-from apps.main.models import Clients
-from apps.company.models import Products
 
-# Create your models here.
+from apps.company.models import Products
+from apps.main.models import Clients
+
+
 class Requests(models.Model):
 
     client = models.ForeignKey(Clients, on_delete=models.CASCADE)

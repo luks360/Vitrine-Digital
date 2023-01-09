@@ -1,7 +1,8 @@
 from django.db import models
+
 from apps.main.models import Stores
 
-# Create your models here.
+
 class Products(models.Model):
 
     name = models.CharField(max_length=200)
