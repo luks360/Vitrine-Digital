@@ -58,6 +58,12 @@ class ShopsView(View):
         return render(request, "shops.html", context={
             'segment': 'Alimentação',
         })
+    
+class StoreView(View):
+    def get(self, request):
+        return render(request, "store.html", context={
+            'segment': 'Alimentação',
+        })
 class AboutView(View):
 
     def get(self, request):
