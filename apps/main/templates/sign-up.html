@@ -27,7 +27,7 @@
                 <div class="tab-content">
                     <div class="tab-pane fade show active" id="pills-register-c" role="tabpanel"
                         aria-labelledby="tab-register-c">
-                        <form>
+                        <form method="post">
                             <div class="text-center mb-3">
                                 <p>Cadastrar com:</p>
                                 <button type="button" class="btn btn-link btn-floating mx-1">
@@ -49,11 +49,7 @@
 
                             <p class="text-center">ou:</p>
 
-                            {{ form_client.name }}
-                            {{ form_client.last_name }}
-                            {{ form_client.email }}
-                            {{ form_client.password }}
-                            {{ form_client.birth_date }}
+                            {{ form_client }}
 
                             <!-- 2 column grid layout -->
                             <div class="row mb-4">
@@ -82,7 +78,8 @@
                         </form>
                     </div>
                     <div class="tab-pane fade" id="pills-register-l" role="tabpanel" aria-labelledby="tab-register-l">
-                        <form>
+                        <form method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
                             <div class="text-center mb-3">
                                 <p>Cadastrar com:</p>
                                 <button type="button" class="btn btn-link btn-floating mx-1">
@@ -103,12 +100,18 @@
                             </div>
 
                             <p class="text-center">or:</p>
-
+                                <label>CNPJ</label>
                                 {{ form_store.cnpj }}
+                                <label>Nome</label>
                                 {{ form_store.corporate_name }}
+                                <label>E-mail</label>
                                 {{ form_store.email }}
+                                <label>Contato</label>
                                 {{ form_store.contact }}
+                                <label>Segmento</label>
                                 {{ form_store.segment }}
+                                <label>Logo</label>
+                                {{ form_store.logo }}
 
                             <!-- 2 column grid layout -->
                             <div class="row mb-4">
