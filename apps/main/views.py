@@ -73,10 +73,15 @@ class LogoutView(View):
         return reverse("login")
 
 class ShopsView(View):
-    def get(self, request):
-        return render(request, "shops.html", context={
-            'segment': 'Alimentação',
-        })
+    def get(self, request, segment):
+
+        stores = Stores.objects.filter(segment=segment)
+
+        items = {
+            "stores": stores
+        }
+
+        return render(request, "shops.html", items)
     
 class StoreView(View):
     def get(self, request):
