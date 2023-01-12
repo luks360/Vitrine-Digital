@@ -12,6 +12,22 @@
     <link rel="stylesheet" href="{% static "assets/css/custom.css" %}">
     <link rel="stylesheet" href="{% static "assets/css/shops.css" %}">
     <link rel="stylesheet" href="{% static "assets/css/store.css" %}">
+    <script defer src="{% static 'assets/js/store.js' %}"></script>
+    <script defer src="{% static 'assets/js/header.js' %}"></script>
+    <script>
+        window.onload = function(event) {
+
+            fetch('http://127.0.0.1:8000/accounts/github/login/', {
+                method: 'get',
+              }).then(function (result) {
+                return result.json()
+              }).then(function (data) {
+                console.log(data)
+              })
+
+              
+        }
+    </script>
 
     <!-- Load fonts style after rendering the layout styles -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">

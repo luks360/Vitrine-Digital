@@ -81,3 +81,25 @@ section{
     height: 245px;
     align-items: center;
 }
+
+.page-customer-account #content {
+    box-shadow: none !important;
+}
+
+#main .page-content, #main .page-header {
+    margin-bottom: 1.563rem;
+}
+
+.page-authentication #content {
+    padding: 1rem;
+    max-width: 640px;
+    margin: 0 auto;
+}
+
+#login-cliente{
+    display: none;
+}
+
+#loginForm{
+    display: inline;
+}

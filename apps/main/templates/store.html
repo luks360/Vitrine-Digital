@@ -1,11 +1,16 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
 {% include 'templates/partials/head.html' %}
-{% load static %}
+ <head>
+  <title>{% block title %}store{% endblock title %}</title>
+</head> 
 
 
 <nav class="navbar navbar-expand-lg navbar-light shadow">
     <div class="container d-flex justify-content-between align-items-center">
 
-        <a class="navbar-brand text-success logo h1 align-self-center" href="/">
+        <a class="navbar-brand text-success logo h1 align-self-center" href="/store">
             <image class="img-fluid" src="https://app.vitrinedigital.net/artenoporco/modules/ps_imageslider/images/92372596dd6c70ad8163ebcd4b1f97de54b4b433_banner.png" style="width: 150px; height: 50px;">
         </a>
 
@@ -28,7 +33,7 @@
                 {% endif %}
                 {% if user.is_authenticated == False %}
                    <div class="user-info">
-                       <a href="/login" >
+                       <a href="#" id="entrar">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
                                 <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z"/>
                             </svg>
@@ -50,6 +55,152 @@
 
     </div>
 </nav>
+
+
+<div class="row d-flex justify-content-center align-items-center h-100">
+    <div class="shadow" style="background-color: #fff;" id="login-cliente">
+        <ul class="nav nav-pills nav-justified mb-3" id="ex1" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link btn btn-block  mb-4 active" id="tab-login-c" data-bs-toggle="pill"
+                    data-bs-target="#pills-login-c" role="tab" aria-controls="pills-login-c"
+                    aria-selected="true">Logar como cliente</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link btn btn-block mb-4 " id="tab-login-l" data-bs-toggle="pill"
+                    data-bs-target="#pills-login-l" role="tab" aria-controls="pills-login-l"
+                    aria-selected="false">Logar como Loja</button>
+            </li>
+        </ul>
+        <!-- Pills navs -->
+
+        <!-- Pills content -->
+        <div class="tab-content">
+            <div class="tab-pane fade show active" id="pills-login-c" role="tabpanel"
+                aria-labelledby="tab-login-c">
+                <form>
+                    <div class="text-center mb-3">
+                        <p>Logar com:</p>
+                        <button type="button" class="btn btn-link btn-floating mx-1">
+                            <i class="fab fa-facebook-f"></i>
+                        </button>
+
+                        <button type="button" class="btn btn-link btn-floating mx-1">
+                            <i class="fab fa-google"></i>
+                        </button>
+
+                        <button type="button" class="btn btn-link btn-floating mx-1">
+                            <i class="fab fa-twitter"></i>
+                        </button>
+
+                        <button type="button" class="btn btn-link btn-floating mx-1">
+                            <i class="fab fa-github"></i>
+                        </button>
+                    </div>
+
+                    <p class="text-center">ou:</p>
+
+                    <!-- Email input -->
+                    <div class="form-outline mb-4">
+                        <input type="email" id="loginName" class="form-control" />
+                        <label class="form-label" for="loginName">Email</label>
+                    </div>
+
+                    <!-- Password input -->
+                    <div class="form-outline mb-4">
+                        <input type="password" id="loginPassword" class="form-control" />
+                        <label class="form-label" for="loginPassword">Senha</label>
+                    </div>
+
+                    <!-- 2 column grid layout -->
+                    <div class="row mb-4">
+                        <div class="col-md-6 d-flex justify-content-center">
+                            <!-- Checkbox -->
+                            <div class="form-check mb-3 mb-md-0">
+                                <input class="form-check-input" type="checkbox" value="" id="loginCheck-c"
+                                    checked />
+                                <label class="form-check-label" for="loginCheck-c"> Lembre de mim </label>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 d-flex justify-content-center">
+                            <!-- Simple link -->
+                            <a href="#!">Esqueceu sua senha?</a>
+                        </div>
+                    </div>
+
+                    <!-- Submit button -->
+                    <button type="submit" class="btn btn-primary btn-block mb-4">Logar</button>
+
+                    <!-- Register buttons -->
+                    <div class="text-center">
+                        <p>Não tem uma conta? <a href="#">Registre-se</a></p>
+                    </div>
+                </form>
+            </div>
+            <div class="tab-pane fade" id="pills-login-l" role="tabpanel" aria-labelledby="tab-login-l">
+                <form>
+                    <div class="text-center mb-3">
+                        <p>Logar com:</p>
+                        <button type="button" class="btn btn-link btn-floating mx-1">
+                            <i class="fab fa-facebook-f"></i>
+                        </button>
+
+                        <button type="button" class="btn btn-link btn-floating mx-1">
+                            <i class="fab fa-google"></i>
+                        </button>
+
+                        <button type="button" class="btn btn-link btn-floating mx-1">
+                            <i class="fab fa-twitter"></i>
+                        </button>
+
+                        <button type="button" class="btn btn-link btn-floating mx-1">
+                            <i class="fab fa-github"></i>
+                        </button>
+                    </div>
+
+                    <p class="text-center">or:</p>
+
+                    <!-- Name input -->
+                    <div class="form-outline mb-4">
+                        <input type="text" id="loginCNPJ" class="form-control" />
+                        <label class="form-label" for="loginCNPJ">CNPJ</label>
+                    </div>
+
+                    <!-- Password input -->
+                    <div class="form-outline mb-4">
+                        <input type="password" id="loginPasswordL" class="form-control" />
+                        <label class="form-label" for="loginPasswordL">Password</label>
+                    </div>
+
+                    <!-- 2 column grid layout -->
+                    <div class="row mb-4">
+                        <div class="col-md-6 d-flex justify-content-center">
+                            <!-- Checkbox -->
+                            <div class="form-check mb-3 mb-md-0">
+                                <input class="form-check-input" type="checkbox" value="" id="loginCheck-l"
+                                    checked />
+                                <label class="form-check-label" for="loginCheck-l"> Lembre de mim </label>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 d-flex justify-content-center">
+                            <!-- Simple link -->
+                            <a href="#!">Esqueceu sua senha?</a>
+                        </div>
+                    </div>
+
+                    <!-- Submit button -->
+                    <button type="submit" class="btn btn-primary btn-block mb-4">Logar</button>
+
+                    <!-- Register buttons -->
+                    <div class="text-center">
+                        <p>Não tem uma loja? <a href="#">Registre uma</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
 <div id="content-wrapper">
     <div id="template-mo-zay-hero-carousel" class="carousel slide" data-bs-ride="carousel">
@@ -123,7 +274,11 @@
     </div>
 </div>
 
-<section class="featured-produts">
+
+
+
+
+<section class="featured-produts" id="produtos">
     <h2 class="h2 products-section-title text-uppercase">Produtos em destaque</h2>
     <div class="products">
         <div class="card" style="width: 18rem;">
@@ -194,3 +349,5 @@
 
 
 {% include 'templates/partials/footer.html' %}
+
+

@@ -28,7 +28,8 @@ class HomeView(View):
 
 class LoginView(LoginView):
     redirect_authenticated_user = True
-    template_name = "sign-in.html"
+    template_name = "login.html"
+
 
     def get_success_url(self):
         return reverse_lazy("index")

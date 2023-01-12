@@ -1,9 +1,12 @@
 {% extends 'base.html' %}
-{% load static %}
+{% comment %} {% extends "socialaccount/base.html" %} {% endcomment %}
+
 {% block title %} Login {% endblock title %}
 
-{% block content %}
+{% load socialaccount %}
+{% providers_media_js %}
 
+{% block content %}
 <!-- Pills navs -->
 <section class="bg-light">
     <div class="container py-5 h-100">
@@ -35,7 +38,12 @@
                                 </button>
 
                                 <button type="button" class="btn btn-link btn-floating mx-1">
-                                    <i class="fab fa-google"></i>
+                                    
+                                            <a href="{% provider_login_url 'google' %}">
+                                                <i class="fab fa-google">
+                                                </i>
+                                             </a> 
+
                                 </button>
 
                                 <button type="button" class="btn btn-link btn-floating mx-1">
