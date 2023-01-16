@@ -18,6 +18,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+MEDIA_ROOT =  os.path.join(BASE_DIR, 'media') 
+MEDIA_URL = '/media/'
 
 # Application definition
 
@@ -41,8 +43,7 @@ INSTALLED_APPS = [
 
 ]
 
-# ed17c77b959554b89de9 github
-# 3766b609bfb09f9bac66580004391fa7421c837a
+
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -137,11 +138,10 @@ AUTHENTICATION_BACKENDS = [
 
 SITE_ID = 1
 LOGIN_URL = '/'
-LOGIN_REDIRECT_URL = '/shops'
+LOGIN_REDIRECT_URL = '/shops/<str:segment>'
 LOGOUT_REDIRECT_URL = '/'
 
-# 391261724698-vtu95ehuf8lpo67jdpg0condj50isa0c.apps.googleusercontent.com
-# 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
+
 
 # SOCIALACCOUNT_QUERY_EMAIL = None
 # ACCOUNT_LOGOUT_ON_GET= None

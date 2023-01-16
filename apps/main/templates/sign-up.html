@@ -3,6 +3,8 @@
 {% block title %} Cadastrar {% endblock title %}
 
 {% block content %}
+{% include 'partials/head.html' %}
+{% load socialaccount %}
 
 <!-- Pills navs -->
 <section class="bg-light">
@@ -27,33 +29,34 @@
                 <div class="tab-content">
                     <div class="tab-pane fade show active" id="pills-register-c" role="tabpanel"
                         aria-labelledby="tab-register-c">
-                        <form>
                             <div class="text-center mb-3">
                                 <p>Cadastrar com:</p>
-                                <button type="button" class="btn btn-link btn-floating mx-1">
-                                    <i class="fab fa-facebook-f"></i>
-                                </button>
 
-                                <button type="button" class="btn btn-link btn-floating mx-1">
-                                    <i class="fab fa-google"></i>
-                                </button>
+                                <form method="post" action="{% provider_login_url 'google' %}" id="loginForm">
 
-                                <button type="button" class="btn btn-link btn-floating mx-1">
-                                    <i class="fab fa-twitter"></i>
-                                </button>
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-link btn-floating mx-1">
+                                            
+                                              <i class="fab fa-google">
+                                              </i>
+                                            </a>   
+                                            
+                                    </button>
+                                </form>
 
-                                <button type="button" class="btn btn-link btn-floating mx-1">
-                                    <i class="fab fa-github"></i>
-                                </button>
+                                <form method="post" action="{% provider_login_url 'github' %}" id="loginForm">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-link btn-floating mx-1">
+              
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                    </button> 
+                                 </form>
                             </div>
 
                             <p class="text-center">ou:</p>
 
-                            {{ form_client.name }}
-                            {{ form_client.last_name }}
-                            {{ form_client.email }}
-                            {{ form_client.password }}
-                            {{ form_client.birth_date }}
+                            {{ form_client }}
 
                             <!-- 2 column grid layout -->
                             <div class="row mb-4">
@@ -79,62 +82,88 @@
                             <div class="text-center">
                                 <p>Não tem uma conta? <a href="#">Registre-se</a></p>
                             </div>
-                        </form>
                     </div>
                     <div class="tab-pane fade" id="pills-register-l" role="tabpanel" aria-labelledby="tab-register-l">
-                        <form>
+                        {% comment %} <form method="post" enctype="multipart/form-data"> {% endcomment %}
+                            
                             <div class="text-center mb-3">
                                 <p>Cadastrar com:</p>
-                                <button type="button" class="btn btn-link btn-floating mx-1">
-                                    <i class="fab fa-facebook-f"></i>
-                                </button>
+                                
 
-                                <button type="button" class="btn btn-link btn-floating mx-1">
+                                {% comment %} <button type="button" class="btn btn-link btn-floating mx-1">
                                     <i class="fab fa-google"></i>
                                 </button>
 
-                                <button type="button" class="btn btn-link btn-floating mx-1">
-                                    <i class="fab fa-twitter"></i>
-                                </button>
 
                                 <button type="button" class="btn btn-link btn-floating mx-1">
                                     <i class="fab fa-github"></i>
-                                </button>
+                                </button> {% endcomment %}
+
+                                <form method="post" action="{% provider_login_url 'google' %}" id="loginForm">
+
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-link btn-floating mx-1">
+                                            
+                                              <i class="fab fa-google">
+                                              </i>
+                                            </a>   
+                                            
+                                    </button>
+                                </form>
+
+                                <form method="post" action="{% provider_login_url 'github' %}" id="loginForm">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-link btn-floating mx-1">
+              
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                    </button> 
+                                 </form>
                             </div>
-
+                            <form method="post" enctype="multipart/form-data">
                             <p class="text-center">or:</p>
-
+                            {% csrf_token %}
+                                <label>CNPJ</label>
                                 {{ form_store.cnpj }}
+                                <label>Nome</label>
                                 {{ form_store.corporate_name }}
+                                <label>E-mail</label>
                                 {{ form_store.email }}
+                                <label>Senha</label>
+                                {{ form_store.password }}
+                                <label>Contato</label>
                                 {{ form_store.contact }}
+                                <label>Segmento</label>
                                 {{ form_store.segment }}
-
-                            <!-- 2 column grid layout -->
-                            <div class="row mb-4">
-                                <div class="col-md-6 d-flex justify-content-center">
-                                    <!-- Checkbox -->
-                                    <div class="form-check mb-3 mb-md-0">
-                                        <input class="form-check-input" type="checkbox" value="" id="registerCheck-l"
+                                <label>Logo</label>
+                                {{ form_store.logo }}
+                                
+                                <!-- 2 column grid layout -->
+                                <div class="row mb-4">
+                                    <div class="col-md-6 d-flex justify-content-center">
+                                        <!-- Checkbox -->
+                                        <div class="form-check mb-3 mb-md-0">
+                                            <input class="form-check-input" type="checkbox" value="" id="registerCheck-l"
                                             checked />
                                         <label class="form-check-label" for="registerCheck-l"> Lembre de mim </label>
                                     </div>
                                 </div>
-
+                                
                                 <div class="col-md-6 d-flex justify-content-center">
                                     <!-- Simple link -->
                                     <a href="#!">Esqueceu sua senha?</a>
                                 </div>
                             </div>
-
+                            
                             <!-- Submit button -->
                             <button type="submit" class="btn btn-primary btn-block mb-4">Cadastrar</button>
-
+                        </form>
+                            
                             <!-- Register buttons -->
                             <div class="text-center">
                                 <p>Não tem uma loja? <a href="#">Registre uma</a></p>
                             </div>
-                        </form>
+                        {% comment %} </form> {% endcomment %}
                     </div>
                 </div>
             </div>

@@ -1,127 +1,35 @@
-<!DOCTYPE html>
-<html lang="pt-br">
 {% include 'templates/partials/head.html' %}
-   <head>
-    <title>{% block title %}shops{% endblock title %}</title>
-  </head> 
+<title>Segmento</title>
+<body>
+    {% include 'templates/partials/header.html' %}
 
-
- {% include 'templates/partials/header.html' %}
-
-<div class="main-container section-padding">
-  
-    <div class="container-list">
-        <div class="row-01">
-            <div class="col-lg-12 col-md-12 col-xs-12 page-content">
-                <div class="tab-content">
-                    <div id="grid-view" class="tab-pane fade active show">
-                        <div class="row-02">
-                            <div class="coluna-card col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                                <div class="card" style="width: 18rem;">
-                                    <img class="card-img-top" src="https://app.vitrinedigital.net/artculinaria/modules/ps_imageslider/images/50d336e859194788e9dc71c410011a1c42831aa0_ART CULINARIA CG.png" alt="Card image cap">
-                                    <div class="tg-product"></div>
-                                    <div class="card-body">
-                                      <h5 class="card-title">Art culinária</h5>
-                                      <span>Segmento: {{segment}}</span>
-                                      <br>
-                                      <p class="card-text">
-                                        Pau dos ferros - RN 
+    <div class="main-container section-padding">
+        <div class="container-list">
+            <div class="row-01">
+                <div class="col-lg-12 col-md-12 col-xs-12 page-content">
+                    <div class="tab-content">
+                        <div id="grid-view" class="tab-pane fade active show">
+                            <div class="row-02">
+                                {% for item in stores %}
+                                <div class="coluna-card col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                    <div class="card" style="width: 18rem;">
+                                        <img class="card-img-top"
+                                            src="{{item.logo.url }}"
+                                            alt="Card image cap">
+                                        <div class="tg-product"></div>
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{item.corporate_name}}</h5>
+                                            <span>Segmento: {{item.segment}}</span>
                                             <br>
-                                            Av. fulano de tal, 2000 - Loja A
-                                      </p>
-                                      <div class="tg-product"></div>
-                                      <a href="#" class="btn btn-danger">Visitar</a>
+                                            <p class="card-text">
+                                                Contato: {{item.contact}}
+                                            </p>
+                                            <div class="tg-product"></div>
+                                            <a href="/store" class="btn btn-danger">Visitar</a>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                                <div class="coluna-card col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                                    <div class="card" style="width: 18rem;">
-                                        <img class="card-img-top" src="https://app.vitrinedigital.net/artenoporco/modules/ps_imageslider/images/92372596dd6c70ad8163ebcd4b1f97de54b4b433_banner.png" alt="Card image cap">
-                                        <div class="tg-product"></div>
-                                        <div class="card-body">
-                                          <h5 class="card-title">Arte no porco</h5>
-                                          <span>Segmento:</span>
-                                         <br>
-                                          <p class="card-text">
-                                            Pau dos ferros - RN 
-                                            <br>
-                                            Av. fulano de tal, 2000 - Loja A
-                                          </p>
-                                          <div class="tg-product"></div>
-                                          <a href="/store" class="btn btn-danger">Visitar</a>
-                                        </div>
-                                    </div> 
-                                </div> 
-                                <div class="coluna-card col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                                    <div class="card" style="width: 18rem;">
-                                        <img class="card-img-top" src="https://app.vitrinedigital.net/deliciasdomilho/modules/ps_imageslider/images/17c1990eb4f2a0d005dbbfc6309eddeced4dd6bd_BANNER.png" alt="Card image cap">
-                                        <div class="tg-product"></div>
-                                        <div class="card-body">
-                                          <h5 class="card-title">Delícias do milho</h5>
-                                          <span>Segmento:</span>
-                                          <br>
-                                          <p class="card-text">
-                                            Pau dos ferros - RN 
-                                            <br>
-                                            Av. fulano de tal, 2000 - Loja A
-                                          </p>
-                                          <div class="tg-product"></div>
-                                          <a href="#" class="btn btn-danger">Visitar</a>
-                                        </div>
-                                    </div> 
-                                </div>
-                                <div class="coluna-card col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                                    <div class="card" style="width: 18rem;">
-                                        <img class="card-img-top" src="https://app.vitrinedigital.net/siriasouto/modules/ps_imageslider/images/e4d7ad2317d285b87b01b56350c09d391dd41e3e_BANNER.png" alt="Card image cap">
-                                        <div class="tg-product"></div>
-                                        <div class="card-body">
-                                          <h5 class="card-title">Síria souto</h5>
-                                          <span>Segmento:</span>
-                                          <br>
-                                          <p class="card-text">Pau dos ferros - RN 
-                                            <br>
-                                            Av. fulano de tal, 2000 - Loja A</p>
-                                            <div class="tg-product"></div>
-                                          <a href="#" class="btn btn-danger">Vsitar</a>
-                                        </div>
-                                    </div> 
-                                </div>
-                                <div class="coluna-card col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                                    <div class="card" style="width: 18rem;">
-                                        <img class="card-img-top" src="https://app.vitrinedigital.net/casamilgraos/modules/ps_imageslider/images/c135483a101fa701186ceddb343e2932d88176fa_banner.png" alt="Card image cap">
-                                        <div class="tg-product"></div>
-                                        <div class="card-body">
-                                          <h5 class="card-title">Casa mil grãos</h5>
-                                          <span>Segmento:</span>
-                                          <br>
-                                          <p class="card-text">
-                                            Pau dos ferros - RN 
-                                            <br>
-                                            Av. fulano de tal, 2000 - Loja A
-                                          </p>
-                                          <div class="tg-product"></div>
-                                          <a href="#" class="btn btn-danger">Visitar</a>
-                                        </div>
-                                    </div> 
-                                </div>
-                                <div class="coluna-card col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                                    <div class="card" style="width: 18rem;">
-                                        <img class="card-img-top" src="https://app.vitrinedigital.net/cafemusic/modules/ps_imageslider/images/68791c80bb41c0193f3cc8ff5072e5ccf085c37d_banner.png" alt="Card image cap">
-                                        <div class="tg-product"></div>
-                                        <div class="card-body">
-                                          <h5 class="card-title">Café music</h5>
-                                          <span>Segmento:</span>
-                                          <br>
-                                          <p class="card-text">
-                                            Pau dos ferros - RN 
-                                            <br>
-                                            Av. fulano de tal, 2000 - Loja A
-                                          </p>
-                                          <div class="tg-product"></div>
-                                          <a href="#" class="btn btn-danger">Visitar</a>
-                                        </div>
-                                    </div> 
-                                </div>
+                                {% endfor %}
                             </div>
                         </div>
                     </div>
@@ -129,27 +37,30 @@
             </div>
         </div>
     </div>
-</div>
-
-{% comment %} <div class="card" style="width: 18rem;">
-    <img class="card-img-top" src="https://via.placeholder.com/1024x500/269feb" alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
     </div>
-  </div>
 
-  <div class="card" style="width: 18rem;">
-    <img class="card-img-top" src="https://via.placeholder.com/1024x500/269feb" alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
+    {% comment %} <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="https://via.placeholder.com/1024x500/269feb" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
     </div>
-  </div>  {% endcomment %}
+
+    <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="https://via.placeholder.com/1024x500/269feb" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+    </div> {% endcomment %}
 
 
-{% include 'templates/partials/footer.html' %} 
+    {% include 'templates/partials/footer.html' %}
+</body>
 
-
+</html>

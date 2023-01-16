@@ -4,8 +4,10 @@ from django.contrib.auth.views import LoginView
 from django.shortcuts import redirect, render
 from django.urls import reverse, reverse_lazy
 from django.views import View
-
 from apps.main.forms import RegisterClientForm, RegisterStoreForm
+from apps.main.models import Clients, Stores
+
+# Create your views here.
 
 categories = [
     "Cosméticos",
@@ -45,6 +47,23 @@ class RegisterView(View):
         "form_store": RegisterStoreForm(),
     }
 
+    def post(self, request):
+        
+        client_form = RegisterClientForm(request.POST, request.FILES)
+        store_form = RegisterStoreForm(request.POST, request.FILES)
+
+        print(store_form.data)
+        # if client_form:  # pragma: no cover
+        #     if client_form.is_valid():
+        #         client_form.save()
+        #         return redirect("login")
+
+        if store_form.is_valid():
+            store_form.save()
+            return redirect("/login")
+
+        return render(request, "sign-up.html", self.forms)
+
     def get(self, request):
 
         return render(request, "sign-up.html", self.forms)
@@ -55,10 +74,15 @@ class LogoutView(View):
         return reverse("login")
 
 class ShopsView(View):
-    def get(self, request):
-        return render(request, "shops.html", context={
-            'segment': 'Alimentação',
-        })
+    def get(self, request, segment):
+
+        stores = Stores.objects.filter(segment=segment)
+
+        items = {
+            "stores": stores
+        }
+
+        return render(request, "shops.html", items)
     
 class StoreView(View):
     def get(self, request):

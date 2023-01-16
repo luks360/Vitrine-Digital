@@ -21,12 +21,14 @@ class Stores(models.Model):
     cnpj = models.CharField(max_length=200)
     corporate_name = models.CharField(max_length=200)
     email = models.EmailField()
+    password = models.CharField(max_length=200)
     contact = models.CharField(max_length=200)
     segment = models.CharField(
         max_length = 200,
         choices = SEGMENT_CHOICES,
         default = '-------------'
     )
+    logo = models.ImageField(upload_to = "logos/")
 
 class Clients(models.Model):
 
@@ -36,3 +38,4 @@ class Clients(models.Model):
     email = models.EmailField()
     password = models.CharField(max_length=200)
     birth_date = models.DateField()
+    icon = models.ImageField()

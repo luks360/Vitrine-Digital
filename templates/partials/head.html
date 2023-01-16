@@ -25,6 +25,14 @@
                 console.log(data)
               })
 
+              fetch('http://127.0.0.1:8000/accounts/google/login/', {
+                method: 'get',
+              }).then(function (result) {
+                return result.json()
+              }).then(function (data) {
+                console.log(data)
+              })
+
               
         }
     </script>

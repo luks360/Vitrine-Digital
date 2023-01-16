@@ -2,9 +2,9 @@
 {% comment %} {% extends "socialaccount/base.html" %} {% endcomment %}
 
 {% block title %} Login {% endblock title %}
-
+{% include 'partials/head.html' %}
 {% load socialaccount %}
-{% providers_media_js %}
+
 
 {% block content %}
 <!-- Pills navs -->
@@ -30,33 +30,35 @@
                 <div class="tab-content">
                     <div class="tab-pane fade show active" id="pills-login-c" role="tabpanel"
                         aria-labelledby="tab-login-c">
-                        <form>
-                            <div class="text-center mb-3">
-                                <p>Logar com:</p>
-                                <button type="button" class="btn btn-link btn-floating mx-1">
-                                    <i class="fab fa-facebook-f"></i>
-                                </button>
-
-                                <button type="button" class="btn btn-link btn-floating mx-1">
-                                    
-                                            <a href="{% provider_login_url 'google' %}">
-                                                <i class="fab fa-google">
-                                                </i>
-                                             </a> 
-
-                                </button>
-
-                                <button type="button" class="btn btn-link btn-floating mx-1">
-                                    <i class="fab fa-twitter"></i>
-                                </button>
-
-                                <button type="button" class="btn btn-link btn-floating mx-1">
+                        <div class="text-center mb-3">
+                            <p>Logar com:</p>
+                            
+                            <form method="post" action="{% provider_login_url 'github' %}" id="loginForm">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-link btn-floating mx-1">
+          
                                     <i class="fab fa-github"></i>
-                                </button>
-                            </div>
-
-                            <p class="text-center">ou:</p>
-
+                                </a>
+                                </button> 
+                             </form>
+                             
+                              <form method="post" action="{% provider_login_url 'google' %}" id="loginForm">
+    
+                                  {% csrf_token %}
+                                  <button type="submit" class="btn btn-link btn-floating mx-1">
+                                          
+                                            <i class="fab fa-google">
+                                            </i>
+                                          </a>   
+                                          
+                                  </button>
+                              </form>
+                            
+                        </div>
+                        
+                        <form>
+                        <p class="text-center">ou:</p>
+                        
                             <!-- Email input -->
                             <div class="form-outline mb-4">
                                 <input type="email" id="loginName" class="form-control" />
@@ -96,26 +98,42 @@
                         </form>
                     </div>
                     <div class="tab-pane fade" id="pills-login-l" role="tabpanel" aria-labelledby="tab-login-l">
-                        <form>
-                            <div class="text-center mb-3">
-                                <p>Logar com:</p>
-                                <button type="button" class="btn btn-link btn-floating mx-1">
-                                    <i class="fab fa-facebook-f"></i>
-                                </button>
-
-                                <button type="button" class="btn btn-link btn-floating mx-1">
-                                    <i class="fab fa-google"></i>
-                                </button>
-
-                                <button type="button" class="btn btn-link btn-floating mx-1">
-                                    <i class="fab fa-twitter"></i>
-                                </button>
-
-                                <button type="button" class="btn btn-link btn-floating mx-1">
+                        <div class="text-center mb-3">
+                            <p>Logar com:</p>
+                            
+                            <form method="post" action="{% provider_login_url 'github' %}" id="loginForm">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-link btn-floating mx-1">
+          
                                     <i class="fab fa-github"></i>
-                                </button>
-                            </div>
-
+                                </a>
+                                </button> 
+                             </form>
+                             
+                              <form method="post" action="{% provider_login_url 'google' %}" id="loginForm">
+    
+                                  {% csrf_token %}
+                                  <button type="submit" class="btn btn-link btn-floating mx-1">
+                                          
+                                            <i class="fab fa-google">
+                                            </i>
+                                          </a>   
+                                          
+                                  </button>
+                              </form>
+                               
+                            {% comment %} <button type="button" class="btn btn-link btn-floating mx-1">
+                                <i class="fab fa-google"></i>
+                            </button>
+                            
+                            
+                            
+                            <button type="button" class="btn btn-link btn-floating mx-1">
+                                <i class="fab fa-github"></i>
+                            </button> {% endcomment %}
+                        </div>
+                        
+                        <form>
                             <p class="text-center">or:</p>
 
                             <!-- Name input -->
