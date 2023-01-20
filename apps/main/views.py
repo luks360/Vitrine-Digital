@@ -6,6 +6,8 @@ from django.urls import reverse, reverse_lazy
 from django.views import View
 from apps.main.forms import RegisterClientForm, RegisterStoreForm
 from apps.main.models import Clients, Stores
+from apps.company.models import Products
+import uuid
 
 # Create your views here.
 
@@ -85,10 +87,19 @@ class ShopsView(View):
         return render(request, "shops.html", items)
     
 class StoreView(View):
-    def get(self, request):
-        return render(request, "store.html", context={
-            'segment': 'Alimentação',
-        })
+
+    def get(self, request, id):
+
+        store = Stores.objects.get(id=id)
+        products = Products.objects.filter(store__id=id)
+        print(store)
+        item = {
+            'store': store,
+            'products': products,
+        }
+
+        return render(request, "store.html", item)
+    
 class AboutView(View):
 
     def get(self, request):
