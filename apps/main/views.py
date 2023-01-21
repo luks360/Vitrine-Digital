@@ -54,15 +54,15 @@ class RegisterView(View):
         client_form = RegisterClientForm(request.POST, request.FILES)
         store_form = RegisterStoreForm(request.POST, request.FILES)
 
-        print(store_form.data)
-        # if client_form:  # pragma: no cover
-        #     if client_form.is_valid():
-        #         client_form.save()
-        #         return redirect("login")
+        if client_form:  # pragma: no cover
+            if client_form.is_valid():
+                client_form.save()
+                return redirect("/login")
 
-        if store_form.is_valid():
-            store_form.save()
-            return redirect("/login")
+        if store_form:
+            if store_form.is_valid():
+                store_form.save()
+                return redirect("/login")
 
         return render(request, "sign-up.html", self.forms)
 
