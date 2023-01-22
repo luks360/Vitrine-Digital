@@ -7,6 +7,8 @@ from django.views import View
 
 from apps.main.forms import RegisterClientForm, RegisterStoreForm
 from apps.main.models import Clients, Stores
+from apps.company.models import Products
+import uuid
 
 # Create your views here.
 
@@ -53,15 +55,15 @@ class RegisterView(View):
         client_form = RegisterClientForm(request.POST, request.FILES)
         store_form = RegisterStoreForm(request.POST, request.FILES)
 
-        print(store_form.data)
-        # if client_form:  # pragma: no cover
-        #     if client_form.is_valid():
-        #         client_form.save()
-        #         return redirect("login")
+        if client_form:  # pragma: no cover
+            if client_form.is_valid():
+                client_form.save()
+                return redirect("/login")
 
-        if store_form.is_valid():
-            store_form.save()
-            return redirect("/login")
+        if store_form:
+            if store_form.is_valid():
+                store_form.save()
+                return redirect("/login")
 
         return render(request, "sign-up.html", self.forms)
 
@@ -86,10 +88,19 @@ class ShopsView(View):
         return render(request, "shops.html", items)
     
 class StoreView(View):
-    def get(self, request):
-        return render(request, "store.html", context={
-            'segment': 'Alimentação',
-        })
+
+    def get(self, request, id):
+
+        store = Stores.objects.get(id=id)
+        products = Products.objects.filter(store__id=id)
+        print(store)
+        item = {
+            'store': store,
+            'products': products,
+        }
+
+        return render(request, "store.html", item)
+    
 class AboutView(View):
 
     def get(self, request):

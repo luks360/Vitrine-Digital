@@ -1,5 +1,6 @@
 {% include 'templates/partials/head.html' %}
 <title>Segmento</title>
+
 <body>
     {% include 'templates/partials/header.html' %}
 
@@ -10,10 +11,11 @@
                     <div class="tab-content">
                         <div id="grid-view" class="tab-pane fade active show">
                             <div class="row-02">
+                            {% if stores %}
                                 {% for item in stores %}
                                 <div class="coluna-card col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                                    <div class="card">
-                                        <img 
+                                    <div class="card" style="width: 18rem;">
+                                        <img class="card-img-top"
                                             src="{{item.logo.url }}"
                                             alt="Card image cap">
                                         <div class="tg-product"></div>
@@ -21,17 +23,18 @@
                                             <h5 class="card-title">{{item.corporate_name}}</h5>
                                             <span>Segmento: {{item.segment}}</span>
                                             <br>
-                                            <div class="tg-product">
-                                                <p class="card-text">
-                                                    Contato: {{item.contact}}
-                                                </p>
-
-                                            </div>
+                                            <p class="card-text">
+                                                Contato: {{item.contact}}
+                                            </p>
+                                            <div class="tg-product"></div>
                                             <a href="/store" class="btn btn-danger">Visitar</a>
                                         </div>
                                     </div>
                                 </div>
                                 {% endfor %}
+                            {% else %}
+                                <h2 style="padding: 50px 0 100px 0;">Ainda não há lojas nesse segmento.</h2>
+                            {% endif %}
                             </div>
                         </div>
                     </div>

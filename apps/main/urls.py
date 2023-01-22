@@ -17,6 +17,7 @@ urlpatterns = [
     path("store", StoreView.as_view(), name="store"),
     path("logout", LogoutView.as_view(), name="logout"),
     
+    path("store/<str:id>", StoreView.as_view(), name="store"),
     
 ]
 
