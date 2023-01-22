@@ -4,6 +4,7 @@ from django.contrib.auth.views import LoginView
 from django.shortcuts import redirect, render
 from django.urls import reverse, reverse_lazy
 from django.views import View
+
 from apps.main.forms import RegisterClientForm, RegisterStoreForm
 from apps.main.models import Clients, Stores
 
@@ -71,7 +72,7 @@ class RegisterView(View):
 class LogoutView(View):
     def get(self, request):
         logout(request)
-        return reverse("login")
+        return redirect("/")
 
 class ShopsView(View):
     def get(self, request, segment):

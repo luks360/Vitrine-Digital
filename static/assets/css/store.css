@@ -103,3 +103,8 @@ section{
 #loginForm{
     display: inline;
 }
+
+#logout{
+    margin-left: 7px;
+}
+

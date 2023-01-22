@@ -2,10 +2,11 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import include, path
 
-from .views import (AboutView, ContactView, HomeView, LoginView, RegisterView,
-                    ShopsView, StoreView)
+from .views import (AboutView, ContactView, HomeView, LoginView, LogoutView,
+                    RegisterView, ShopsView, StoreView)
 
 app_name = "main"
+
 urlpatterns = [
     path("", HomeView.as_view(), name="home"),
     path("login", LoginView.as_view(), name="login"),
@@ -14,9 +15,11 @@ urlpatterns = [
     path("contact", ContactView.as_view(), name="contact"),
     path("register", RegisterView.as_view(), name="register"),
     path("store", StoreView.as_view(), name="store"),
+    path("logout", LogoutView.as_view(), name="logout"),
+    
     
 ]
 
-if settings.DEBUG:
+if settings.DEBUG: # pragma: no cover
         urlpatterns += static (settings.MEDIA_URL,
                               document_root = settings.MEDIA_ROOT)

@@ -1,5 +1,6 @@
 from django.contrib import admin
-from apps.main.models import Stores, Clients
+
+from apps.main.models import Clients, Stores
 
 # Register your models here.
 
