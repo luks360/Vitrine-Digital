@@ -14,10 +14,9 @@ urlpatterns = [
     path("about", AboutView.as_view(), name="about"),
     path("contact", ContactView.as_view(), name="contact"),
     path("register", RegisterView.as_view(), name="register"),
-    path("store", StoreView.as_view(), name="store"),
+    path("store/<str:id>", StoreView.as_view(), name="store"),
     path("logout", LogoutView.as_view(), name="logout"),
     
-    path("store/<str:id>", StoreView.as_view(), name="store"),
     
 ]
 

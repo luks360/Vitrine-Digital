@@ -33,6 +33,10 @@ class MainUrlsTest(MainTestBase):
        url = reverse('main:register')
        self.assertEqual(url, '/register')
        
+    def test_store_urls(self):
+       url = reverse('main:store', kwargs={'id': '36109a98-8c82-4589-8806-09efcd835bd3'})
+       self.assertEqual(url, '/store/36109a98-8c82-4589-8806-09efcd835bd3')
+       
     def test_home_view_return_status_code_200_ok(self):
         response = self.client.get(reverse('main:home'))
         self.assertEqual(200, response.status_code)
@@ -63,7 +67,7 @@ class MainUrlsTest(MainTestBase):
         
     
     def test_register_store_returns_code_200_ok(self):
-        response = self.client.post(reverse('main:register'),{
+        response = self.client.post(reverse('main:register', kwargs={}),{
             'cnpj': '23432',
             'corporate_name': 'alguma coisa',
             'email': 'test@example',
@@ -78,7 +82,4 @@ class MainUrlsTest(MainTestBase):
         self.assertEqual(response.status_code, 200)
         
         
-    def test_store_view_returns_code_200_ok(self):
-        response = self.client.get(reverse('main:store'))
-        self.assertEqual(response.status_code, 200)
         
