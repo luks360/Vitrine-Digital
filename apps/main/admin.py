@@ -1,8 +1,7 @@
 from django.contrib import admin
 
-from apps.main.models import Clients, Stores
+from apps.main.models import User
 
 # Register your models here.
 
-admin.site.register(Stores)
-admin.site.register(Clients)
+admin.site.register(User)

@@ -56,19 +56,19 @@
                             
                         </div>
                         
-                        <form>
+                        <form method="post">
                         <p class="text-center">ou:</p>
-                        
+                        {% csrf_token %}
                             <!-- Email input -->
                             <div class="form-outline mb-4">
-                                <input type="email" id="loginName" class="form-control" />
                                 <label class="form-label" for="loginName">Email</label>
+                                {{ form_client.email }}
                             </div>
 
                             <!-- Password input -->
                             <div class="form-outline mb-4">
-                                <input type="password" id="loginPassword" class="form-control" />
                                 <label class="form-label" for="loginPassword">Senha</label>
+                                {{ form_client.password }}
                             </div>
 
                             <!-- 2 column grid layout -->
@@ -93,7 +93,7 @@
 
                             <!-- Register buttons -->
                             <div class="text-center">
-                                <p>Não tem uma conta? <a href="#">Registre-se</a></p>
+                                <p>Não tem uma conta? <a href="/register">Registre-se</a></p>
                             </div>
                         </form>
                     </div>
@@ -133,19 +133,19 @@
                             </button> {% endcomment %}
                         </div>
                         
-                        <form>
+                        <form method="post">
                             <p class="text-center">or:</p>
-
+                            {% csrf_token %}
                             <!-- Name input -->
                             <div class="form-outline mb-4">
-                                <input type="text" id="loginCNPJ" class="form-control" />
                                 <label class="form-label" for="loginCNPJ">CNPJ</label>
+                                {{form_store.cnpj}}
                             </div>
 
                             <!-- Password input -->
                             <div class="form-outline mb-4">
-                                <input type="password" id="loginPasswordL" class="form-control" />
                                 <label class="form-label" for="loginPasswordL">Password</label>
+                                {{form_store.password}}
                             </div>
 
                             <!-- 2 column grid layout -->

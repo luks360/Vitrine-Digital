@@ -1,12 +1,11 @@
 from django.contrib import messages
-from django.contrib.auth import logout
+from django.contrib.auth import logout, login, authenticate
 from django.contrib.auth.views import LoginView
 from django.shortcuts import redirect, render
 from django.urls import reverse, reverse_lazy
 from django.views import View
-
-from apps.main.forms import RegisterClientForm, RegisterStoreForm
-from apps.main.models import Clients, Stores
+from apps.main.forms import RegisterClientForm, RegisterStoreForm, LoginClientForm, LoginStoreForm
+from apps.main.models import User
 from apps.company.models import Products
 import uuid
 
@@ -32,16 +31,25 @@ class HomeView(View):
 
 
 class LoginView(LoginView):
-    redirect_authenticated_user = True
-    template_name = "login.html"
 
+    forms = {
+        "form_client": LoginClientForm(),
+        "form_store": LoginStoreForm(),
+    }
 
-    def get_success_url(self):
-        return reverse_lazy("index")
+    def post(self, request):
+        user_aux = User.objects.get(email=request.POST["email"])
+        password = request.POST["password"]
+        user = authenticate(request, email=user_aux.email, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect("/")
 
-    def form_invalid(self, form):
-        messages.error(self.request, "Inválido Login e Senha.")
-        return self.render_to_response(self.get_context_data(form=form))
+        return render(request, "login.html", self.forms)
+
+    def get(self, request):
+
+        return render(request, "login.html", self.forms)
 
 class RegisterView(View):
 
@@ -57,12 +65,16 @@ class RegisterView(View):
 
         if client_form:  # pragma: no cover
             if client_form.is_valid():
-                client_form.save()
+                client = client_form.save(commit=False)
+                client.is_client = True
+                client.save()
                 return redirect("/login")
 
         if store_form:
             if store_form.is_valid():
-                store_form.save()
+                store = store_form.save(commit=False)
+                store.is_store = True
+                store.save()
                 return redirect("/login")
 
         return render(request, "sign-up.html", self.forms)
@@ -74,12 +86,12 @@ class RegisterView(View):
 class LogoutView(View):
     def get(self, request):
         logout(request)
-        return redirect("/")
+        return redirect("/login")
 
 class ShopsView(View):
     def get(self, request, segment):
 
-        stores = Stores.objects.filter(segment=segment)
+        stores = User.objects.filter(segment=segment)
 
         items = {
             "stores": stores
@@ -91,7 +103,7 @@ class StoreView(View):
 
     def get(self, request, id):
 
-        store = Stores.objects.get(id=id)
+        store = User.objects.get(id=id)
         products = Products.objects.filter(store__id=id)
         print(store)
         item = {

@@ -16,35 +16,24 @@ SEGMENT_CHOICES = (
     ("Eletrônicos", "Eletrônicos"),
 )
 
-class Stores(models.Model):
+class User(AbstractBaseUser):
 
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    cnpj = models.CharField(max_length=200, unique=True)
-    corporate_name = models.CharField(max_length=200)
-    email = models.EmailField()
+    cnpj = models.CharField(max_length=200, unique=True, null=True)
+    name = models.CharField(max_length=200)
+    birth_date = models.DateField(null=True)
+    email = models.EmailField(unique=True)
     password = models.CharField(max_length=200)
-    contact = models.CharField(max_length=200)
+    contact = models.CharField(max_length=200, null=True)
     segment = models.CharField(
         max_length = 200,
         choices = SEGMENT_CHOICES,
-        default = '-------------'
+        default = '-------------',
+        null=True
     )
-    logo = models.ImageField(upload_to = "logos/")
-
-    objects = UserManager()
-
-    USERNAME_FIELD = "cnpj"
-
-class Clients(models.Model):
-
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    name = models.CharField(max_length=200)
-    last_name = models.CharField(max_length=200)
-    email = models.EmailField(unique=True)
-    password = models.CharField(max_length=200)
-    birth_date = models.DateField()
     icon = models.ImageField(upload_to = "icons/")
-
+    is_client = models.BooleanField(default=False)
+    is_store = models.BooleanField(default=False)
     objects = UserManager()
 
     USERNAME_FIELD = "email"
