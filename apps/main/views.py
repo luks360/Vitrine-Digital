@@ -2,12 +2,10 @@ from django.contrib import messages
 from django.contrib.auth import logout, login, authenticate
 from django.contrib.auth.views import LoginView
 from django.shortcuts import redirect, render
-from django.urls import reverse, reverse_lazy
 from django.views import View
 from apps.main.forms import RegisterClientForm, RegisterStoreForm, LoginClientForm, LoginStoreForm
 from apps.main.models import User
 from apps.company.models import Products
-import uuid
 
 # Create your views here.
 
