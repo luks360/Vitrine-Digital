@@ -1,6 +1,6 @@
 from django.db import models
 
-from apps.main.models import User
+from apps.main.models import Stores
 
 
 class Products(models.Model):
@@ -9,4 +9,4 @@ class Products(models.Model):
     description = models.CharField(max_length=200)
     price = models.DecimalField(decimal_places=2,max_digits=10)
     image = models.ImageField()
-    store = models.ForeignKey(User, on_delete=models.CASCADE)
+    store = models.ForeignKey(Stores, on_delete=models.CASCADE)

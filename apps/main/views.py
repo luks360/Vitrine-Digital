@@ -9,7 +9,7 @@ from django.views import View
 from apps.company.models import Products
 from apps.main.forms import (LoginClientForm, LoginStoreForm,
                              RegisterClientForm, RegisterStoreForm)
-from apps.main.models import User
+from apps.main.models import Clients, Stores
 
 # Create your views here.
 
@@ -40,9 +40,9 @@ class LoginView(LoginView):
     }
 
     def post(self, request):
-        user_aux = User.objects.get(email=request.POST["email"])
+        user_aux = Clients.objects.get(email=request.POST["email"])
         password = request.POST["password"]
-        user = authenticate(request, email=user_aux.email, password=password)
+        user = authenticate(request, username=user_aux.email, password=password)
         if user is not None:
             login(request, user)
             return redirect("/")
@@ -67,16 +67,12 @@ class RegisterView(View):
 
         if client_form:  # pragma: no cover
             if client_form.is_valid():
-                client = client_form.save(commit=False)
-                client.is_client = True
-                client.save()
+                client_form.save()
                 return redirect("/login")
 
         if store_form:
             if store_form.is_valid():
-                store = store_form.save(commit=False)
-                store.is_store = True
-                store.save()
+                store_form.save()
                 return redirect("/login")
 
         return render(request, "sign-up.html", self.forms)
@@ -93,7 +89,7 @@ class LogoutView(View):
 class ShopsView(View):
     def get(self, request, segment):
 
-        stores = User.objects.filter(segment=segment)
+        stores = Stores.objects.filter(segment=segment)
 
         items = {
             "stores": stores
@@ -105,7 +101,7 @@ class StoreView(View):
 
     def get(self, request, id):
 
-        store = User.objects.get(id=id)
+        store = Stores.objects.get(id=id)
         products = Products.objects.filter(store__id=id)
         
         item = {

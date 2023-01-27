@@ -1,5 +1,5 @@
 from django import forms
-from apps.main.models import User
+from apps.main.models import Stores, Clients
 
 
 class RegisterStoreForm(forms.ModelForm):
@@ -11,8 +11,8 @@ class RegisterStoreForm(forms.ModelForm):
             field.widget.attrs['class'] = 'form-control'
 
     class Meta:
-        model = User
-        fields = ["name", "email", "password", "cnpj", "contact", "segment", "icon"]
+        model = Stores
+        fields = '__all__'
 
 class RegisterClientForm(forms.ModelForm):
 
@@ -23,8 +23,8 @@ class RegisterClientForm(forms.ModelForm):
             field.widget.attrs['class'] = 'form-control'
 
     class Meta:
-        model = User
-        fields = ["name", "email", "password", "birth_date", "icon"]
+        model = Clients
+        fields = '__all__'
 
 class LoginClientForm(forms.ModelForm):
 
@@ -35,7 +35,7 @@ class LoginClientForm(forms.ModelForm):
             field.widget.attrs['class'] = 'form-control'
 
     class Meta:
-        model = User
+        model = Clients
         fields = ["email", "password"]
 
 class LoginStoreForm(forms.ModelForm):
@@ -47,5 +47,5 @@ class LoginStoreForm(forms.ModelForm):
             field.widget.attrs['class'] = 'form-control'
 
     class Meta:
-        model = User
+        model = Stores
         fields = ["cnpj", "password"]

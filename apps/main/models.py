@@ -1,6 +1,5 @@
 import uuid
 from django.db import models
-from django.contrib.auth.models import AbstractBaseUser, UserManager, PermissionsMixin
 
 # Create your models here.
 
@@ -16,24 +15,27 @@ SEGMENT_CHOICES = (
     ("Eletrônicos", "Eletrônicos"),
 )
 
-class User(AbstractBaseUser):
+class Stores(models.Model):
 
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    cnpj = models.CharField(max_length=200, unique=True, null=True)
-    name = models.CharField(max_length=200)
-    birth_date = models.DateField(null=True)
-    email = models.EmailField(unique=True)
+    cnpj = models.CharField(max_length=200, unique=True)
+    corporate_name = models.CharField(max_length=200)
+    email = models.EmailField()
     password = models.CharField(max_length=200)
-    contact = models.CharField(max_length=200, null=True)
+    contact = models.CharField(max_length=200)
     segment = models.CharField(
         max_length = 200,
         choices = SEGMENT_CHOICES,
-        default = '-------------',
-        null=True
+        default = '-------------'
     )
-    icon = models.ImageField(upload_to = "icons/")
-    is_client = models.BooleanField(default=False)
-    is_store = models.BooleanField(default=False)
-    objects = UserManager()
+    logo = models.ImageField(upload_to = "logos/")
 
-    USERNAME_FIELD = "email"
+class Clients(models.Model):
+
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    name = models.CharField(max_length=200)
+    last_name = models.CharField(max_length=200)
+    email = models.EmailField(unique=True)
+    password = models.CharField(max_length=200)
+    birth_date = models.DateField()
+    icon = models.ImageField(upload_to = "icons/")
