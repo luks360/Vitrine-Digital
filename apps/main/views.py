@@ -1,3 +1,5 @@
+import uuid
+
 from django.contrib import messages
 from django.contrib.auth import logout
 from django.contrib.auth.views import LoginView
@@ -5,10 +7,9 @@ from django.shortcuts import redirect, render
 from django.urls import reverse, reverse_lazy
 from django.views import View
 
+from apps.company.models import Products
 from apps.main.forms import RegisterClientForm, RegisterStoreForm
 from apps.main.models import Clients, Stores
-from apps.company.models import Products
-import uuid
 
 # Create your views here.
 
@@ -93,12 +94,11 @@ class StoreView(View):
 
         store = Stores.objects.get(id=id)
         products = Products.objects.filter(store__id=id)
-        print(store)
+        
         item = {
             'store': store,
             'products': products,
         }
-
         return render(request, "store.html", item)
     
 class AboutView(View):

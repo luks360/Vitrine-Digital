@@ -144,18 +144,16 @@
 
 
 <section class="featured-produts" id="produtos">
-    <h2 class="h2 products-section-title text-uppercase">Produtos em destaque</h2>
-    <div class="products">
+    <h2 class="h2 products-section-title text-uppercase" style="margin-top: 30px;">Produtos em destaque</h2>
+    <div class="coluna-card col-xs-12 col-sm-12 col-md-4 col-lg-4">
     {% if products %}
         {% for product in products %}
-        <div class="card" style="width: 18rem;">
-            <img class="card-store" src="{{product.image}}" alt="Card image cap">
-            <div class="card-body">
-              <p class="card-text">
-                {{product.name}}
-                <br>
-                {{product.price}}
-              </p>
+        <div class="card">
+            <img class="card-store"style="width:250px; height:250px;" src="{{product.image.url}}" alt="Card image cap">
+            <div class="product-description">
+                <h3 class="card-title">{{product.name}}</h3>
+                
+                <span style="font-size:20px; text-align:center;">R$ {{product.price}}</span>
             </div>
         </div>
         {% endfor %}

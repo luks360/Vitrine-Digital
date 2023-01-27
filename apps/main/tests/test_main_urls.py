@@ -1,3 +1,5 @@
+
+import requests
 from django.urls import reverse
 from test_main_base import MainTestBase
 
@@ -11,6 +13,10 @@ class MainUrlsTest(MainTestBase):
        url = reverse('main:home')
        self.assertEqual(url, '/')
        
+    def test_redirect_login_urls(self):
+       response = self.client.post(reverse('main:register'))
+       self.assertEqual(response.status_code, 200)
+    #    self.assertRedirects(response,'/login')
        
     def test_login_urls(self):
        url = reverse('main:login')
@@ -60,6 +66,10 @@ class MainUrlsTest(MainTestBase):
         response = self.client.get(reverse('main:about'))
         self.assertEqual(200, response.status_code)
         
+    def test_logout_view_return_status_code_200_ok(self):
+        response = self.client.get(reverse('main:logout'))
+        self.assertEqual(302, response.status_code)
+    
     
     def test_contact_view_return_status_code_200_ok(self):
         response = self.client.get(reverse('main:contact'))
@@ -67,7 +77,7 @@ class MainUrlsTest(MainTestBase):
         
     
     def test_register_store_returns_code_200_ok(self):
-        response = self.client.post(reverse('main:register', kwargs={}),{
+        response = self.client.post(reverse('main:register'),{
             'cnpj': '23432',
             'corporate_name': 'alguma coisa',
             'email': 'test@example',
@@ -82,4 +92,13 @@ class MainUrlsTest(MainTestBase):
         self.assertEqual(response.status_code, 200)
         
         
-        
+    def test_store_view_return_status_code_200_ok(self):
+       response = requests.get('http://127.0.0.1:8000/store/36109a98-8c82-4589-8806-09efcd835bd3') 
+       assert response.status_code == 200
+       
+    # def test_redirect_login(self):
+    #     url = reverse('main:login')
+    #     self.assertRedirects(url, '/login')
+       
+     
+    
