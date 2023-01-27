@@ -28,6 +28,7 @@
                     <div class="tab-pane fade show active" id="pills-register-c" role="tabpanel"
                         aria-labelledby="tab-register-c">
                         <form method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
                             <div class="text-center mb-3">
                                 <p>Cadastrar com:</p>
                                 <button type="button" class="btn btn-link btn-floating mx-1">
@@ -48,12 +49,9 @@
                             </div>
 
                             <p class="text-center">ou:</p>
-
-                            {% csrf_token %}
+                            
                             <label>Nome</label>
                             {{ form_client.name }}
-                            <label>Sobrenome</label>
-                            {{ form_client.last_name }}
                             <label>E-mail</label>
                             {{ form_client.email }}
                             <label>Senha</label>
@@ -98,7 +96,7 @@
                                 <label>CNPJ</label>
                                 {{ form_store.cnpj }}
                                 <label>Nome</label>
-                                {{ form_store.corporate_name }}
+                                {{ form_store.name }}
                                 <label>E-mail</label>
                                 {{ form_store.email }}
                                 <label>Senha</label>
@@ -108,7 +106,7 @@
                                 <label>Segmento</label>
                                 {{ form_store.segment }}
                                 <label>Logo</label>
-                                {{ form_store.logo }}
+                                {{ form_store.icon }}
 
                             <!-- Submit button -->
                             <button type="submit" class="btn btn-primary btn-block mb-4">Cadastrar</button>
