@@ -1,0 +1,16 @@
+{% for message in messages %}
+<div class="container w-50 py-2">
+    <div class="alert {{ message.tags }} alert-dismissible fade show" role="alert" >
+        <div class="row">
+            <div class="col-sm-11 text-center">
+                {{ message }}
+            </div>
+            <div class="col-sm-1 col-sm-offset-2 text-sm-right">
+                <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}

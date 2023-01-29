@@ -68,17 +68,16 @@ class RegisterView(View):
         if client_form:  # pragma: no cover
             if client_form.is_valid():
                 client_form.save()
-                return redirect("/login")
+                messages.success(request, 'Cadastrado com sucesso!')
 
         if store_form:
             if store_form.is_valid():
                 store_form.save()
-                return redirect("/login")
+                messages.success(request, 'Cadastrado com sucesso!')
 
         return render(request, "sign-up.html", self.forms)
 
     def get(self, request):
-
         return render(request, "sign-up.html", self.forms)
 
 class LogoutView(View):
