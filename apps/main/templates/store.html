@@ -2,9 +2,10 @@
 <html lang="pt-br">
 
 {% include 'templates/partials/head.html' %}
- <head>
-  <title>{{store.corporate_name}}</title>
-</head> 
+
+<head>
+    <title>{{store.corporate_name}}</title>
+</head>
 
 
 <nav class="navbar navbar-expand-lg navbar-light shadow">
@@ -14,51 +15,63 @@
             <img class="img-fluid" src="{{store.logo.url}}">
         </a>
 
-        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#templatemo_main_nav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
+            data-bs-target="#templatemo_main_nav" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between" id="templatemo_main_nav">
-            
+        <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between"
+            id="templatemo_main_nav">
+
             <div class="navbar align-self-center d-flex">
                 <div class="user-info">
 
                     {% if user.is_authenticated == True %}
-                        <a class="nav-icon position-relative text-decoration-none" href="#">
-                            <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
-                            <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">7</span>
-                        </a>
-                        <a class="nav-icon position-relative text-decoration-none" href="#">
-                            <i class="fa fa-fw fa-user text-dark mr-3"></i>
-                            <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">+99</span>
-                        </a>
+                    <a class="nav-icon position-relative text-decoration-none" href="#">
+                        <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
+                        <span
+                            class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">7</span>
+                    </a>
+                    <a class="nav-icon position-relative text-decoration-none" href="#">
+                        <i class="fa fa-fw fa-user text-dark mr-3"></i>
+                        <span
+                            class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">+99</span>
+                    </a>
 
-                        <a href="/logout" id="logout">
-                    
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-box-arrow-left" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z"/>
-                                <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"/>
-                            </svg>
-                        </a>
+                    <a href="/logout" id="logout">
+
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                            class="bi bi-box-arrow-left" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z" />
+                            <path fill-rule="evenodd"
+                                d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z" />
+                        </svg>
+                    </a>
                     {% endif %}
                 </div>
                 {% if user.is_authenticated == False %}
-                   <div class="user-info">
-                       <a href="#" id="entrar">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
-                                <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z"/>
-                            </svg>
-                            Entrar
-                        </a>
+                <div class="user-info">
+                    <a href="#" id="entrar">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                            class="bi bi-person" viewBox="0 0 16 16">
+                            <path
+                                d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z" />
+                        </svg>
+                        Entrar
+                    </a>
 
-                        <a href="#" class="cart">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
-                                <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-                              </svg>
-                            <span>Carrinho</span>
-                            <span>(3)</span>
-                        </a>
-                    </div>
+                    <a href="#" class="cart">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-cart" viewBox="0 0 16 16">
+                            <path
+                                d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                        </svg>
+                        <span>Carrinho</span>
+                        <span>(3)</span>
+                    </a>
+                </div>
 
                 {% endif %}
             </div>
@@ -86,7 +99,8 @@
                                 <h1 class="h1 text-danger"><b>Vitrine digital</b></h1>
                                 <h3 class="h2">O lugar perfeito para você crescer</h3>
                                 <p>
-                                    Cresça sua marca de forma facil e simples com nosso sistema, além de ter uma página exclusiva para seu negocio.
+                                    Cresça sua marca de forma facil e simples com nosso sistema, além de ter uma página
+                                    exclusiva para seu negocio.
                                 </p>
                             </div>
                         </div> {% endcomment %}
@@ -104,7 +118,8 @@
                                 <h1 class="h1">Cliente</h1>
                                 <h3 class="h2">Ache tudo mais facilmente</h3>
                                 <p>
-                                    Com nosso sistema você poderá achar o que precisa muito mais facil com nosso agrupamento de lojas por categoria.
+                                    Com nosso sistema você poderá achar o que precisa muito mais facil com nosso
+                                    agrupamento de lojas por categoria.
                                 </p>
                             </div>
                         </div>
@@ -122,7 +137,8 @@
                                 <h1 class="h1">Marca</h1>
                                 <h3 class="h2">Venda seus produtos de forma online</h3>
                                 <p>
-                                    Além de divulgar com facilidade, você tambem terá suporte a vendas online em um mesmo sistema.
+                                    Além de divulgar com facilidade, você tambem terá suporte a vendas online em um
+                                    mesmo sistema.
                                 </p>
                             </div>
                         </div>
@@ -130,40 +146,39 @@
                 </div>
             </div>
         </div>
-        <a class="carousel-control-prev text-decoration-none w-auto ps-3" href="#template-mo-zay-hero-carousel" role="button" data-bs-slide="prev">
+        <a class="carousel-control-prev text-decoration-none w-auto ps-3" href="#template-mo-zay-hero-carousel"
+            role="button" data-bs-slide="prev">
             <i class="fas fa-chevron-left"></i>
         </a>
-        <a class="carousel-control-next text-decoration-none w-auto pe-3" href="#template-mo-zay-hero-carousel" role="button" data-bs-slide="next">
+        <a class="carousel-control-next text-decoration-none w-auto pe-3" href="#template-mo-zay-hero-carousel"
+            role="button" data-bs-slide="next">
             <i class="fas fa-chevron-right"></i>
         </a>
     </div>
 </div>
 
-
-
-
-
 <section class="featured-produts" id="produtos">
     <h2 class="h2 products-section-title text-uppercase" style="margin-top: 30px;">Produtos em destaque</h2>
-    <div class="coluna-card col-xs-12 col-sm-12 col-md-4 col-lg-4">
-    {% if products %}
+    <div class="row">
+
+        {% if products %}
         {% for product in products %}
-        <div class="card">
-            <img class="card-store"style="width:250px; height:250px;" src="{{product.image.url}}" alt="Card image cap">
-            <div class="product-description">
-                <h3 class="card-title">{{product.name}}</h3>
-                
-                <span style="font-size:20px; text-align:center;">R$ {{product.price}}</span>
+        <div class="col-12 col-md-4 mb-4">
+            <div class="card">
+                <img class="card-store" style="width:250px; height:250px;" src="{{product.image.url}}"
+                    alt="Card image cap">
+                <div class="product-description">
+                    <h3 class="card-title">{{product.name}}</h3>
+
+                    <span style="font-size:20px; text-align:center;">R$ {{product.price}}</span>
+                </div>
             </div>
         </div>
         {% endfor %}
-    {% else %} 
+        {% else %}
         <h2 style="padding: 50px 0 100px 0;">Ainda não há produtos nessa loja.</h2>
-    {% endif %}
+        {% endif %}
     </div>
 </section>
 
-
 {% include 'templates/partials/footer.html' %}
-
-
