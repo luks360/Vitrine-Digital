@@ -11,13 +11,11 @@
                     <div class="tab-content">
                         <div id="grid-view" class="tab-pane fade active show">
                             <div class="row-02">
-                            {% if stores %}
+                                {% if stores %}
                                 {% for item in stores %}
                                 <div class="coluna-card col-xs-12 col-sm-12 col-md-4 col-lg-4">
                                     <div class="card" style="width: 18rem;">
-                                        <img class="card-img-top"
-                                            src="{{item.logo.url }}"
-                                            alt="Card image cap">
+                                        <img class="card-img-top" src="{{item.logo.url }}" alt="Card image cap">
                                         <div class="tg-product"></div>
                                         <div class="card-body">
                                             <h5 class="card-title">{{item.corporate_name}}</h5>
@@ -32,9 +30,24 @@
                                     </div>
                                 </div>
                                 {% endfor %}
-                            {% else %}
+                                {% else %}
                                 <h2 style="padding: 50px 0 100px 0;">Ainda não há lojas nesse segmento.</h2>
-                            {% endif %}
+                                {% endif %}
+                            </div>
+                            <div class="pagination row col-xs-12 col-sm-12 col-md-12 col-lg-12" align="center">
+                                <span class="step-links">
+                                    {% if stores.has_previous %}
+                                    <h5><a href="?page={{ stores.previous_page_number }}">Anterior</a></h5>
+                                    {% endif %}
+
+                                    <span class="current">
+                                        <h5>{{ stores.number }} de {{ stores.paginator.num_pages }}</h5>
+                                    </span>
+
+                                    {% if stores.has_next %}
+                                    <h5><a href="?page={{ stores.next_page_number }}">Próxima</a></h5>
+                                    {% endif %}
+                                </span>
                             </div>
                         </div>
                     </div>

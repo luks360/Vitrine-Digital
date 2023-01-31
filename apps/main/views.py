@@ -1,5 +1,7 @@
 import uuid
+import random
 
+from django.core.paginator import Paginator
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.views import LoginView
@@ -29,7 +31,14 @@ categories = [
 class HomeView(View):
     def get(self, request):
 
-        return render(request, "index.html", {"categories": categories})
+        products = random.sample(list(Products.objects.all()), 3)
+
+        items = {
+            'categories': categories,
+            'products': products
+        }
+
+        return render(request, "index.html", items)
 
 
 class LoginView(LoginView):
@@ -78,6 +87,8 @@ class RegisterView(View):
         return render(request, "sign-up.html", self.forms)
 
     def get(self, request):
+
+        messages.success(request, 'Cadastrado com sucesso!')
         return render(request, "sign-up.html", self.forms)
 
 class LogoutView(View):
@@ -89,9 +100,12 @@ class ShopsView(View):
     def get(self, request, segment):
 
         stores = Stores.objects.filter(segment=segment)
+        paginator = Paginator(stores, 12)
+        page = request.GET.get("page")
+        storesP = paginator.get_page(page)
 
         items = {
-            "stores": stores
+            "stores": storesP
         }
 
         return render(request, "shops.html", items)
