@@ -107,27 +107,40 @@
     </div>
 </div>
 
-<section class="featured-produts" id="produtos">
-    <h2 class="h2 products-section-title text-uppercase" style="margin-top: 30px;">Produtos em destaque</h2>
-    <div class="row">
-
-        {% if products %}
-        {% for product in products %}
-        <div class="col-12 col-md-4 mb-4">
-            <div class="card">
-                <img class="card-store" style="width:250px; height:250px;" src="{{product.image.url}}"
-                    alt="Card image cap">
-                <div class="product-description">
-                    <h3 class="card-title">{{product.name}}</h3>
-
-                    <span style="font-size:20px; text-align:center;">R$ {{product.price}}</span>
-                </div>
+<section class="featured-produts bg-light" id="produtos">
+    <div class="container py-5">
+        <div class="row text-center py-3">
+            <div class="col-lg-6 m-auto">
+                <h1 class="h1">Sugestão de produtos</h1>
             </div>
         </div>
-        {% endfor %}
-        {% else %}
-        <h2 style="padding: 50px 0 100px 0;">Ainda não há produtos nessa loja.</h2>
-        {% endif %}
+        <div class="row">
+
+            {% if products %}
+            {% for product in products %}
+            <div class="col-12 col-md-3 mb-3">
+                <div class="card h-100">
+                    <a href="/store/{{product.store.id}}">
+                        <img src={{product.image.url}} class="card-img-top img-fluid" alt="...">
+                    </a>
+                    <div class="card-body">
+                        <a href="/store/{{product.store.id}}"
+                            class="h2 text-decoration-none text-dark">{{product.name}}</a>
+                        <p class="card-text">
+                            {{product.description}}
+                        </p>
+                        <p class="text-muted text-right"> R$ {{product.price}} </p>
+                        <a href="/store/{{product.store.id}}">
+                            <button class="btn btn-danger">Comprar</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            {% else %}
+            <h2 style="padding: 50px 0 100px 0;">Ainda não há produtos nessa loja.</h2>
+            {% endif %}
+        </div>
     </div>
 </section>
 
