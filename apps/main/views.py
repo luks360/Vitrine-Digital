@@ -7,8 +7,12 @@ from django.shortcuts import redirect, render
 from django.views import View
 
 from apps.company.models import Products
-from apps.main.forms import (LoginClientForm, LoginStoreForm,
-                             RegisterClientForm, RegisterStoreForm)
+from apps.main.forms import (
+    LoginClientForm,
+    LoginStoreForm,
+    RegisterClientForm,
+    RegisterStoreForm,
+)
 from apps.main.models import Clients, Stores
 
 # Create your views here.
@@ -53,6 +57,7 @@ class LoginView(LoginView):
 
         return render(request, "login.html", self.forms)
 
+
 class RegisterView(View):
 
     forms = {
@@ -61,7 +66,7 @@ class RegisterView(View):
     }
 
     def post(self, request):
-        
+
         client_form = RegisterClientForm(request.POST, request.FILES)
         store_form = RegisterStoreForm(request.POST, request.FILES)
 
@@ -81,43 +86,43 @@ class RegisterView(View):
 
         return render(request, "sign-up.html", self.forms)
 
+
 class LogoutView(View):
     def get(self, request):
         logout(request)
         return redirect("/login")
+
 
 class ShopsView(View):
     def get(self, request, segment):
 
         stores = Stores.objects.filter(segment=segment)
 
-        items = {
-            "stores": stores
-        }
+        items = {"stores": stores}
 
         return render(request, "shops.html", items)
-    
-class StoreView(View):
 
+
+class StoreView(View):
     def get(self, request, id):
 
         store = Stores.objects.get(id=id)
         products = Products.objects.filter(store__id=id)
-        
+
         item = {
-            'store': store,
-            'products': products,
+            "store": store,
+            "products": products,
         }
         return render(request, "store.html", item)
-    
-class AboutView(View):
 
+
+class AboutView(View):
     def get(self, request):
 
         return render(request, "about.html")
 
-class ContactView(View):
 
+class ContactView(View):
     def get(self, request):
 
         return render(request, "contact.html")
