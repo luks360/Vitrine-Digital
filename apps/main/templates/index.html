@@ -135,78 +135,25 @@
                 </div>
             </div>
             <div class="row">
+                {% for product in products %}
                 <div class="col-12 col-md-4 mb-4">
                     <div class="card h-100">
-                        <a href="shop-single.html">
-                            <img src="https://a-static.mlcdn.com.br/800x560/kit-anilhas-e-barras-para-musculacao-academia-treino-em-casa-pesos-de-mao-halter-de-academia-natural-fitness/naturalfitnessartesportivos/kit20kgluva/f4b2e803df7c807c81fad861d82e8833.jpg" class="card-img-top" alt="...">
+                        <a href="/store/{{product.store.id}}">
+                            <img src={{product.image.url}} class="card-img-top img-fluid" alt="...">
                         </a>
                         <div class="card-body">
-                            <ul class="list-unstyled d-flex justify-content-between">
-                                <li>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-muted fa fa-star"></i>
-                                    <i class="text-muted fa fa-star"></i>
-                                </li>
-                                <li class="text-muted text-right">$240.00</li>
-                            </ul>
-                            <a href="shop-single.html" class="h2 text-decoration-none text-dark">Pesos para academia</a>
+                            <a href="/store/{{product.store.id}}" class="h2 text-decoration-none text-dark">{{product.name}}</a>
                             <p class="card-text">
-                                Conjunto de pesos para academia contendo 10 peças
+                                {{product.description}}
                             </p>
-                            <p class="text-muted">Avaliações (24)</p>
+                            <p class="text-muted text-right"> R$ {{product.price}} </p>
+                            <a href="/store/{{product.store.id}}">
+                                <button class="btn btn-danger">Saiba mais</button>
+                            </a>
                         </div>
                     </div>
                 </div>
-                <div class="col-12 col-md-4 mb-4">
-                    <div class="card h-100">
-                        <a href="shop-single.html">
-                            <img src="https://images.ctfassets.net/od02wyo8cgm5/xo8qaX85o4sEwch4RHPv2/63792ddccb6d2cb8580ac5167c540b25/59.98535-cloud_5-fw22-frost_indigo-m-g1.png?w=630&h=630&fl=progressive&q=71&fit=pad&bg=rgb:f7f7f7&fm=jpg" class="card-img-top" alt="...">
-                        </a>
-                        <div class="card-body">
-                            <ul class="list-unstyled d-flex justify-content-between">
-                                <li>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-muted fa fa-star"></i>
-                                    <i class="text-muted fa fa-star"></i>
-                                </li>
-                                <li class="text-muted text-right">$480.00</li>
-                            </ul>
-                            <a href="shop-single.html" class="h2 text-decoration-none text-dark">Tênis Cloud Nike</a>
-                            <p class="card-text">
-                                Tênis da marca Nike cor branco
-                            </p>
-                            <p class="text-muted">Avaliações (48)</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-4 mb-4">
-                    <div class="card h-100">
-                        <a href="shop-single.html">
-                            <img src="https://imgs.ponto.com.br/17861/1xg.jpg" class="card-img-top" alt="...">
-                        </a>
-                        <div class="card-body">
-                            <ul class="list-unstyled d-flex justify-content-between">
-                                <li>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                </li>
-                                <li class="text-muted text-right">$360.00</li>
-                            </ul>
-                            <a href="shop-single.html" class="h2 text-decoration-none text-dark">Conjunto de talheres</a>
-                            <p class="card-text">
-                                Conjunto de talheres contendo 10 colheres, 10 garfos, 10 facas, entre outros itens.
-                            </p>
-                            <p class="text-muted">Avaliações (74)</p>
-                        </div>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
         </div>
     </section>

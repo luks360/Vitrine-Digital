@@ -7,3 +7,8 @@ class DashboardView(View):
     def get(self, request):
 
         return render(request, "dashboard-company.html")
+
+class RequestsView(View):
+    def get(self, request):
+
+        return render(request, "requests-company.html")

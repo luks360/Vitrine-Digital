@@ -1,8 +1,10 @@
+import random
 import uuid
 
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.views import LoginView
+from django.core.paginator import Paginator
 from django.shortcuts import redirect, render
 from django.views import View
 
@@ -33,7 +35,11 @@ categories = [
 class HomeView(View):
     def get(self, request):
 
-        return render(request, "index.html", {"categories": categories})
+        products = random.sample(list(Products.objects.all()), 3)
+
+        items = {"categories": categories, "products": products}
+
+        return render(request, "index.html", items)
 
 
 class LoginView(LoginView):
@@ -73,17 +79,18 @@ class RegisterView(View):
         if client_form:  # pragma: no cover
             if client_form.is_valid():
                 client_form.save()
-                return redirect("/login")
+                messages.success(request, "Cadastrado com sucesso!")
 
         if store_form:
             if store_form.is_valid():
                 store_form.save()
-                return redirect("/login")
+                messages.success(request, "Cadastrado com sucesso!")
 
         return render(request, "sign-up.html", self.forms)
 
     def get(self, request):
 
+        messages.success(request, "Cadastrado com sucesso!")
         return render(request, "sign-up.html", self.forms)
 
 
@@ -97,8 +104,11 @@ class ShopsView(View):
     def get(self, request, segment):
 
         stores = Stores.objects.filter(segment=segment)
+        paginator = Paginator(stores, 12)
+        page = request.GET.get("page")
+        storesP = paginator.get_page(page)
 
-        items = {"stores": stores}
+        items = {"stores": storesP}
 
         return render(request, "shops.html", items)
 

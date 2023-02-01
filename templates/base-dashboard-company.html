@@ -7,7 +7,7 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        {% include 'partials/sidebar-dashboard.html' %}
+        {% include 'partials/sidebar-dashboard-company.html' %}
         <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
@@ -24,21 +24,15 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">{% block title-page %} {% endblock %}</h1>
-                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm"><i
-                                class="fas fa-plus fa-sm text-white"></i> {% block title-button %} {% endblock %}</a>
-                    </div>
 
                     {% block content %} {% endblock %}
-
-        </div>
+                </div>
+            </div>
         <!-- End of Content Wrapper -->
         <!-- Footer -->
-        {% include 'partials/footer.html' %}
-        <!-- End of Footer -->
-    </div>
-    <!-- End of Page Wrapper -->
+        {% include 'partials/footer-dashboard.html' %}
+        
+
 
     <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">
