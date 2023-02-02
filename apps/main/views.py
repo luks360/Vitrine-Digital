@@ -35,7 +35,10 @@ categories = [
 class HomeView(View):
     def get(self, request):
 
-        products = random.sample(list(Products.objects.all()), 3)
+        products = Products.objects.all()
+
+        if products:
+            products = random.sample(list(), 3)
 
         items = {"categories": categories, "products": products}
 
