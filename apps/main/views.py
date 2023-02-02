@@ -1,3 +1,4 @@
+import os
 import random
 import uuid
 
@@ -17,6 +18,7 @@ from apps.main.forms import (
 )
 from apps.main.models import Clients, Stores
 
+PER_PAGE = os.environ.get("PER_PAGE", 6)
 # Create your views here.
 
 categories = [
@@ -32,11 +34,13 @@ categories = [
 ]
 
 
+print(PER_PAGE)
+
+
 class HomeView(View):
     def get(self, request):
 
         products = random.sample(list(Products.objects.all()), 3)
-
         items = {"categories": categories, "products": products}
 
         return render(request, "index.html", items)

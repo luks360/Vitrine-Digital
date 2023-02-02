@@ -48,6 +48,11 @@ urlpatterns = [
         viewsets.clients_api_unique,
         name="clients_api_unique",
     ),
+    path(
+        "stores/report/api",
+        viewsets.store_report,
+        name="store_report",
+    ),
 ]
 
 if settings.DEBUG:  # pragma: no cover
