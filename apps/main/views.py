@@ -41,11 +41,16 @@ class HomeView(View):
     def get(self, request):
 
         products = Products.objects.all()
+        productsV = []
+        if products is not None:
+            if len(products) >= 3:
+                productsV = random.sample(list(products), 3)
+            elif len(products) == 2:
+                productsV = random.sample(list(products), 2)
+            elif len(products) == 1:
+                productsV = random.sample(list(products), 1)
 
-        if products:
-            products = random.sample(list(), 3)
-
-        items = {"categories": categories, "products": products}
+        items = {"categories": categories, "products": productsV}
 
         return render(request, "index.html", items)
 
