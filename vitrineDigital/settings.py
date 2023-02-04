@@ -1,6 +1,7 @@
 import os
 from datetime import timedelta
 from pathlib import Path
+
 from django.contrib.messages import constants as messages
 
 # from datetime import timedelta
@@ -114,13 +115,13 @@ REST_FRAMEWORK = {
     )
 }
 
-# SIMPLE_JWT = {
-#     "ACCESS_TOKEN_LIFETIME": timedelta(minutes=60),
-#     "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
-#     "BLACKLIST_AFTER_ROTATION": False,
-#     "SIGNING_KEY": "4395762394875632894756vb4387vfg",
-#     "AUTH_HEADER_TYPES": ("Bearer",),
-# }
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=60),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
+    # "BLACKLIST_AFTER_ROTATION": False,
+    # "SIGNING_KEY": "4395762394875632894756vb4387vfg",
+    # "AUTH_HEADER_TYPES": ("Bearer",),
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
@@ -151,12 +152,12 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 MESSAGE_TAGS = {
-        messages.DEBUG: 'alert-secondary',
-        messages.INFO: 'alert-info',
-        messages.SUCCESS: 'alert-success',
-        messages.WARNING: 'alert-warning',
-        messages.ERROR: 'alert-danger',
- }
+    messages.DEBUG: "alert-secondary",
+    messages.INFO: "alert-info",
+    messages.SUCCESS: "alert-success",
+    messages.WARNING: "alert-warning",
+    messages.ERROR: "alert-danger",
+}
 
 SITE_ID = 1
 LOGIN_URL = "/"

@@ -35,6 +35,14 @@ def store_api_unique(request, id):
     return Response(serializer.data, status=status.HTTP_200_OK)
 
 
+@api_view(["DELETE"])
+@permission_classes([IsAuthenticated])
+def delete_store_api(request, id):
+    stores = models.Stores.objects.get(id=id)
+    stores.delete()
+    return Response(status=status.HTTP_204_NO_CONTENT)
+
+
 @swagger_auto_schema(
     method="POST",
     request_body=serializers.StoreSerializer,
@@ -44,6 +52,23 @@ def store_api_unique(request, id):
 def store_api_create(request):
 
     serializer = serializers.StoreSerializer(data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+    else:
+        return Response(serializer.data, status=status.HTTP_400_BAD_REQUEST)
+
+
+@swagger_auto_schema(
+    method="POST",
+    request_body=serializers.StoreSerializer,
+)
+@api_view(http_method_names=["POST"])
+@permission_classes([IsAuthenticated])
+def update_store_api(request, id):
+
+    stores = models.Stores.objects.get(id=id)
+    serializer = serializers.StoreSerializer(instance=stores, data=request.data)
     if serializer.is_valid():
         serializer.save()
         return Response(serializer.data, status=status.HTTP_201_CREATED)
@@ -95,8 +120,23 @@ def store_report(request):
 @api_view(http_method_names=["POST"])
 @permission_classes([IsAuthenticated])
 def clients_api_create(request):
-    print(request.data)
     serializer = serializers.ClientsSerializer(data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+    else:
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@swagger_auto_schema(
+    method="POST",
+    request_body=serializers.ClientsSerializer,
+)
+@api_view(http_method_names=["POST"])
+@permission_classes([IsAuthenticated])
+def update_client_api(request, id):
+    client = models.Clients.objects.get(id=id)
+    serializer = serializers.ClientsSerializer(instance=client, data=request.data)
     if serializer.is_valid():
         serializer.save()
         return Response(serializer.data, status=status.HTTP_201_CREATED)
@@ -120,3 +160,11 @@ def clients_api_unique(request, id):
     serializer = serializers.ClientsSerializer(instance=clients, many=False)
 
     return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+@api_view(["DELETE"])
+@permission_classes([IsAuthenticated])
+def delete_client_api(request, id):
+    client = models.Clients.objects.get(id=id)
+    client.delete()
+    return Response(status=status.HTTP_204_NO_CONTENT)

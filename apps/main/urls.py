@@ -53,6 +53,26 @@ urlpatterns = [
         viewsets.store_report,
         name="store_report",
     ),
+    path(
+        "stores/update/api/<str:id>",
+        viewsets.update_store_api,
+        name="store_report",
+    ),
+    path(
+        "stores/delete/api/<str:id>",
+        viewsets.delete_store_api,
+        name="store_report",
+    ),
+    path(
+        "clients/update/api/<str:id>",
+        viewsets.update_client_api,
+        name="store_report",
+    ),
+    path(
+        "clients/delete/api/<str:id>",
+        viewsets.delete_client_api,
+        name="store_report",
+    ),
 ]
 
 if settings.DEBUG:  # pragma: no cover
