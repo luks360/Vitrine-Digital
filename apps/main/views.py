@@ -103,7 +103,6 @@ class RegisterView(View):
 
     def get(self, request):
 
-        messages.success(request, "Cadastrado com sucesso!")
         return render(request, "sign-up.html", self.forms)
 
 

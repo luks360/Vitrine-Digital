@@ -1,3 +1,5 @@
+import datetime
+
 from django.db import connection
 from drf_yasg.utils import swagger_auto_schema
 from iteration_utilities import duplicates
@@ -168,3 +170,14 @@ def delete_client_api(request, id):
     client = models.Clients.objects.get(id=id)
     client.delete()
     return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+@api_view(["GET"])
+def filter_client(request):
+    start_date = datetime.date(2000, 1, 1)
+    end_date = datetime.date(2022, 1, 1)
+    clients = models.Clients.objects.filter(birth_date__range=(start_date, end_date))
+    print(clients)
+    serializer = serializers.ClientsSerializer(instance=clients, many=True)
+
+    return Response(serializer.data, status=status.HTTP_200_OK)

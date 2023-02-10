@@ -73,6 +73,11 @@ urlpatterns = [
         viewsets.delete_client_api,
         name="store_report",
     ),
+    path(
+        "clients/report/api",
+        viewsets.filter_client,
+        name="store_report_filter",
+    ),
 ]
 
 if settings.DEBUG:  # pragma: no cover

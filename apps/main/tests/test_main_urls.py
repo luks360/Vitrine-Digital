@@ -91,6 +91,6 @@ class MainUrlsTest(MainTestBase):
 
     def test_store_view_return_status_code_200_ok(self):
         response = requests.get(
-            "http://127.0.0.1:8000/store/5d41dbec-e41b-4a9b-b5c9-1cfb187948e6"
+            "http://127.0.0.1:8000/store/81cf826b-2277-4f53-963b-75c81db216f5"
         )
         assert response.status_code == 200
