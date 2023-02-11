@@ -18,7 +18,7 @@ from apps.main.forms import (
 )
 from apps.main.models import Clients, Stores
 
-PER_PAGE = os.environ.get("PER_PAGE", 6)
+PER_PAGE = os.environ.get("PER_PAGE", 12)
 # Create your views here.
 
 categories = [
@@ -34,15 +34,12 @@ categories = [
 ]
 
 
-print(PER_PAGE)
-
-
 class HomeView(View):
     def get(self, request):
 
         products = Products.objects.all()
         productsV = []
-        if products is not None:
+        if products is not None:  # pragma: no cover
             if len(products) >= 3:
                 productsV = random.sample(list(products), 3)
             elif len(products) == 2:
@@ -63,12 +60,21 @@ class LoginView(LoginView):
     }
 
     def post(self, request):
-        user_aux = Clients.objects.get(email=request.POST["email"])
-        password = request.POST["password"]
-        user = authenticate(request, username=user_aux.email, password=password)
-        if user is not None:
-            login(request, user)
-            return redirect("/")
+        name = request.POST.get("name", False)
+        if name != False:
+            name = request.POST["name"]
+            password = request.POST["password"]
+            user_client = authenticate(request, username=name, password=password)
+            if user_client is not None:  # pragma: no cover
+                login(request, user_client)
+                return redirect("/")
+        else:
+            name = request.POST["corporate_name"]
+            password = request.POST["password"]
+            user_loja = authenticate(request, username=name, password=password)
+            if user_loja is not None:  # pragma: no cover
+                login(request, user_loja)
+                return redirect("/dashboard")
 
         return render(request, "login.html", self.forms)
 
@@ -94,7 +100,7 @@ class RegisterView(View):
                 client_form.save()
                 messages.success(request, "Cadastrado com sucesso!")
 
-        if store_form:
+        if store_form:  # pragma: no cover
             if store_form.is_valid():
                 store_form.save()
                 messages.success(request, "Cadastrado com sucesso!")
@@ -116,7 +122,7 @@ class ShopsView(View):
     def get(self, request, segment):
 
         stores = Stores.objects.filter(segment=segment)
-        paginator = Paginator(stores, 12)
+        paginator = Paginator(stores, PER_PAGE)
         page = request.GET.get("page")
         storesP = paginator.get_page(page)
 

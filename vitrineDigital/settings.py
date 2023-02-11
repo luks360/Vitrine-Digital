@@ -163,22 +163,3 @@ SITE_ID = 1
 LOGIN_URL = "/"
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/"
-
-
-# SOCIALACCOUNT_QUERY_EMAIL = None
-# ACCOUNT_LOGOUT_ON_GET= None
-# ACCOUNT_UNIQUE_EMAIL = None
-# ACCOUNT_EMAIL_REQUIRED = None
-
-# Provider specific settings
-# SOCIALACCOUNT_PROVIDERS = {
-#     'google': {
-#         'SCOPE': [
-#             'profile',
-#             'email',
-#         ],
-#         'AUTH_PARAMS': {
-#             'access_type': 'online',
-#         }
-#     }
-# }

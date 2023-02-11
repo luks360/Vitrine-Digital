@@ -11,11 +11,17 @@ class MainUrlsTest(MainTestBase):
         url = reverse("main:home")
         self.assertEqual(url, "/")
 
+    def test_requests_company_urls(self):
+        url = reverse("company:requests-company")
+        self.assertEqual(url, "/requests")
+
+    def test_dashboard_urls(self):
+        url = reverse("company:dashboard-company")
+        self.assertEqual(url, "/dashboard")
+
     def test_redirect_login_urls(self):
         response = self.client.post(reverse("main:register"))
         self.assertEqual(response.status_code, 200)
-
-    #    self.assertRedirects(response,'/login')
 
     def test_login_urls(self):
         url = reverse("main:login")
@@ -55,6 +61,14 @@ class MainUrlsTest(MainTestBase):
         response = self.client.get(reverse("main:register"))
         self.assertEqual(200, response.status_code)
 
+    def test_dashboard_view_return_status_code_200_ok(self):
+        response = self.client.get(reverse("company:dashboard-company"))
+        self.assertEqual(200, response.status_code)
+
+    def test_requests_view_return_status_code_200_ok(self):
+        response = self.client.get(reverse("company:requests-company"))
+        self.assertEqual(200, response.status_code)
+
     def test_shops_view_return_status_code_200_ok(self):
         response = self.client.get(
             reverse("main:shops", kwargs={"segment": "Alimentacao"})
@@ -88,6 +102,17 @@ class MainUrlsTest(MainTestBase):
             follow=True,
         )
         self.assertEqual(response.status_code, 200)
+
+    def test_create_users(self):
+        self.make_user(
+            first_name="user123",
+            last_name="name123",
+            username="username123",
+            password="123456123",
+            email="username@email.com123",
+        )
+
+        pass
 
     def test_store_view_return_status_code_200_ok(self):
         response = requests.get(

@@ -61,8 +61,8 @@
                         {% csrf_token %}
                             <!-- Email input -->
                             <div class="form-outline mb-4">
-                                <label class="form-label" for="loginName">Email</label>
-                                {{ form_client.email }}
+                                <label class="form-label" for="loginName">Username</label>
+                                {{ form_client.name }}
                             </div>
 
                             <!-- Password input -->
@@ -138,8 +138,8 @@
                             {% csrf_token %}
                             <!-- Name input -->
                             <div class="form-outline mb-4">
-                                <label class="form-label" for="loginCNPJ">CNPJ</label>
-                                {{form_store.cnpj}}
+                                <label class="form-label" for="loginCNPJ">Username</label>
+                                {{form_store.corporate_name}}
                             </div>
 
                             <!-- Password input -->
