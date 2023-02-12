@@ -15,6 +15,7 @@ SEGMENT_CHOICES = (
     ("Eletrônicos", "Eletrônicos"),
 )
 
+
 class Stores(models.Model):
 
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -24,11 +25,10 @@ class Stores(models.Model):
     password = models.CharField(max_length=200)
     contact = models.CharField(max_length=200)
     segment = models.CharField(
-        max_length = 200,
-        choices = SEGMENT_CHOICES,
-        default = '-------------'
+        max_length=200, choices=SEGMENT_CHOICES, default="-------------"
     )
-    logo = models.ImageField(upload_to = "logos/")
+    logo = models.ImageField(upload_to="logos/")
+
 
 class Clients(models.Model):
 
@@ -38,4 +38,4 @@ class Clients(models.Model):
     email = models.EmailField(unique=True)
     password = models.CharField(max_length=200)
     birth_date = models.DateField()
-    icon = models.ImageField(upload_to = "icons/")
+    icon = models.ImageField(upload_to="icons/")
